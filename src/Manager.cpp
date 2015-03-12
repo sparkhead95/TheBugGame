@@ -19,7 +19,7 @@ int gridLength, gridHeight;
 	void Manager::runPreReqs() {
 		ifstream gridConfig;
 		gridConfig.open("gridConfig.txt");
-		char output[100];
+		//char output[100]; -- this line is required if we want to print file contents.
 		if (gridConfig.is_open()) {
 			/*
 			 * Below is the code to print out the contents of the txt file.
