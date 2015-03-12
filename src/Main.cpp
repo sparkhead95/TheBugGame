@@ -25,7 +25,7 @@ Main::Main() {
 
 	manager.runPreReqs();
 	// Manager.rungame (draws the grid, places the aphids/ladybugs)
-	// Manager.
+
 
 }
 
