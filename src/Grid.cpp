@@ -5,9 +5,16 @@
  *      Author: chris
  */
 
+#include "Grid.h"
+using namespace std;
+
 class Grid {
 
-
+	Grid::Grid()
+	{
+		this->height = 10;
+		this->length = 10;
+	}
 
 
 

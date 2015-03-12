@@ -30,6 +30,7 @@ int gridLength, gridHeight;
 			cout<<"File opened.\n";
 			gridConfig>>gridLength;
 			gridConfig>>gridHeight;
+
 		}
 		else if ((gridConfig.is_open()) == false) {
 			cout << "Could not locate/open file.\n";
