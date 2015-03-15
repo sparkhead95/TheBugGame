@@ -13,7 +13,8 @@ using namespace std;
 class Animal
 {
 
-
+	void setHeight(int newHeight);
+	void setLength(int newLength);
 
 
 };
@@ -21,6 +22,7 @@ class Animal
 class Aphid : public Animal {
 
 	Aphid();
+	Aphid(int posX, int posY);
 
 
 
@@ -28,7 +30,8 @@ class Aphid : public Animal {
 
 class Ladybug : public Animal {
 
-
+	Ladybug();
+	Ladybug(int posX, int posY);
 
 
 };

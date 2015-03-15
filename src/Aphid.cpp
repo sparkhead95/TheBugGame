@@ -7,8 +7,6 @@
 
 #include "Animal.h"
 
-class Aphid : public Animal {
-
 
 	//Aphid update() {
 	//	Aphid updatedAphid = new Aphid;
@@ -17,5 +15,3 @@ class Aphid : public Animal {
 	//	return updatedAphid;
 	//}
 
-
-};

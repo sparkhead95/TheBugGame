@@ -7,12 +7,13 @@
 
 #include <fstream>
 #include <iostream>
+#include <vector>
 #include "Manager.h"
 #include "Grid.h"
 
 using namespace std;
 
-int gridLength, gridHeight, aphidNum;
+int gridLength, gridHeight, aphidNum, tempX, tempY;
 
 	Manager::Manager(){
 
@@ -41,6 +42,21 @@ int gridLength, gridHeight, aphidNum;
 		Grid newGrid(gridLength, gridHeight);
 
 		gridConfig>>aphidNum;
+
+		gridConfig >> aphidNum;
+		vector<Aphid> aphidVector(aphidNum);
+		for (int i = 0; i < aphidNum; i++)
+		{
+		gridConfig >> tempX;
+		gridConfig >> tempY;
+		//string temp_name;
+		//cout << "Please enter a name for this aphid: ";
+		//cin >> temp_name;
+		//Aphid temp_aphid(temp_pos1, temp_pos2);
+		//aphidMap[temp_name] = temp_aphid;
+		aphidVector[i].setHeight(tempX);
+		aphidVector[i].setLength(tempY);
+		}
 
 		gridConfig.close();
 

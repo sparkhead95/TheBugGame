@@ -1,3 +1,3 @@
-src/Aphid.d: ../src/Aphid.cpp ../src/Animal.cpp
+src/Aphid.d: ../src/Aphid.cpp ../src/Animal.h
 
-../src/Animal.cpp:
+../src/Animal.h:

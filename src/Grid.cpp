@@ -31,6 +31,10 @@ using namespace std;
 		this->grid = &temp_grid;
 	}
 
+	void Grid::create(){
+
+	}
+
 	int Grid::getHeight()
 	{
 		return this->height;

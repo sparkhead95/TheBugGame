@@ -7,7 +7,6 @@
 
 #include "Animal.cpp"
 
-class Ladybug : public Animal {
 
 
 
@@ -18,5 +17,3 @@ class Ladybug : public Animal {
 	//	return updatedAphid;
 	//}
 
-
-};
