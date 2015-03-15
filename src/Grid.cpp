@@ -47,8 +47,8 @@ void Grid::create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector) {
 
 				/*for (i = 0; i < lengthways.size(); i++)
 				 cout << " " << lengthways.at(i);
-				 cout << endl;
-				 }*/
+				 cout << endl;*/
+				 }
 			}
 		}
 		// ========================================================
@@ -65,8 +65,11 @@ void Grid::create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector) {
 						if (i == temp_pos.second) {
 							lengthways.at(i) = "|L|";
 						} else {
-							lengthways.at(i) = "|-|";
+							//lengthways.at(i) = "|-|";
 						}
+
+					vector<string> finalhorizontal(this->height);
+					vector<string> lengthways(this->length);
 
 					for (i = 0; i < lengthways.size(); i++)
 						cout << " " << lengthways.at(i);
@@ -76,7 +79,7 @@ void Grid::create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector) {
 		}
 	}
 // ========================================================
-	}
+
 int Grid::getHeight() {
 	return this->height;
 }
