@@ -5,7 +5,7 @@
  *      Author: chris
  */
 
-#include "Animal.cpp"
+#include "Animal.h"
 
 
 

@@ -20,7 +20,7 @@ public:
 	Animal();
 	void setHeight(int newHeight);
 	void setLength(int newLength);
-
+	~Animal();
 
 };
 

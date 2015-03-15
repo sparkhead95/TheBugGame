@@ -44,28 +44,13 @@ void Manager::runPreReqs() {
 	gridConfig >> aphidNum;
 
 	gridConfig >> aphidNum;
-	/*vector<Aphid> aphidVector(aphidNum);
+	vector<Aphid> aphidVector(aphidNum);
 	 for (int i = 0; i < aphidNum; i++) {
 	 gridConfig >> tempX;
 	 gridConfig >> tempY;
 	 aphidVector[i].setHeight(tempX);
 	 aphidVector[i].setLength(tempY);
-	 }*/
-	vector<string> horizontal(10);
-		unsigned int j;
-		for (j = 0; j < horizontal.size(); j++) {
-			vector<string> lengthways(10);
-			unsigned int i;
-			for (i = 0; i < lengthways.size(); i++)
-				lengthways.at(i) = "||";
-
-			for (i = 0; i < lengthways.size(); i++)
-				cout << " " << lengthways.at(i);
-
-			cout << endl;
-		}
-
-
+	 }
 
 	gridConfig.close();
 
