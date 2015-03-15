@@ -1,4 +1,6 @@
 /*
+
+
 #include "Animal.h"
 using namespace std;
 
@@ -15,6 +17,8 @@ using namespace std;
 	void Animal::setLength(int newLength){
 
 	}
+
+
 
 
 */

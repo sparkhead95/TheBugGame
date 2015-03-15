@@ -4,7 +4,7 @@
  *  Created on: 10 Mar 2015
  *      Author: chris
  */
-#include "vector"
+#include <vector>
 #include "Grid.h"
 using namespace std;
 
@@ -23,19 +23,6 @@ using namespace std;
 
 
 	void Grid::write(){
-		vector<string> horizontal(height);
-			unsigned int j;
-			for (j = 0; j < horizontal.size(); j++) {
-				vector<string> lengthways(length);
-				unsigned int i;
-				for (i = 0; i < lengthways.size(); i++)
-					lengthways.at(i) = "||";
-
-				for (i = 0; i < lengthways.size(); i++)
-					cout << " " << lengthways.at(i);
-
-				cout << endl;
-			}
 
 	}
 
