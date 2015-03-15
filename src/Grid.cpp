@@ -27,7 +27,9 @@ void Grid::write() {
 }
 
 void Grid::create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector) {
+	// ============= Aphid initial draw section ============================
 	vector<string> horizontal(this->height);
+	vector<string> lengthways(this->length);
 	unsigned int j;
 	for (vector<Aphid>::iterator aphIt = aphidVector.begin();
 			aphIt != aphidVector.end(); ++aphIt) {
@@ -35,7 +37,6 @@ void Grid::create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector) {
 		pair<int, int> temp_pos = (*aphIt).getPosition();
 		for (j = 0; j < horizontal.size(); j++) {
 			if (j == temp_pos.first) {
-				vector<string> lengthways(this->length);
 				unsigned int i;
 				for (i = 0; i < lengthways.size(); i++)
 					if (i == temp_pos.second) {
@@ -50,6 +51,32 @@ void Grid::create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector) {
 			}
 		}
 	}
+	// ========================================================
+
+	//  ============= ladybug initial draw section ==============
+
+	for (vector<Ladybug>::iterator ladIt = ladyVector.begin();
+			ladIt != ladyVector.end(); ++ladIt) {
+		pair<int, int> temp_pos = (*ladIt).getPosition();
+		cout << temp_pos.first << temp_pos.second;
+		cout << endl;
+		for (j = 0; j < horizontal.size(); j++) {
+			if (j == temp_pos.first) {
+				unsigned int i;
+				for (i = 0; i < lengthways.size(); i++)
+					if (i == temp_pos.second) {
+						lengthways.at(i) = "|L|";
+					} else {
+						lengthways.at(i) = "|-|";
+					}
+
+				for (i = 0; i < lengthways.size(); i++)
+					cout << " " << lengthways.at(i);
+				cout << endl;
+			}
+		}
+	}
+// ========================================================
 }
 
 int Grid::getHeight() {

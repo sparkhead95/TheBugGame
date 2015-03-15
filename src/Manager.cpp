@@ -70,6 +70,8 @@ void Manager::runPreReqs() {
 		gridConfig >> tempY;
 		ladyVector[j].setHeight(tempX);
 		ladyVector[j].setLength(tempX);
+		cout << tempX << " " << tempY;
+		cout << endl;
 	}
 
 	// now that we have all of the locations for the animals, draw the grid.
