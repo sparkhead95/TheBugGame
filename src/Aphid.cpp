@@ -8,11 +8,13 @@
 #include "Animal.h"
 
 	Aphid::Aphid(){
-
+		xCoord = 0;
+		yCoord = 0;
 	}
 
 	Aphid::Aphid(int posX, int posY){
-
+		xCoord = posX;
+		yCoord = posY;
 
 	}
 	//Aphid update() {

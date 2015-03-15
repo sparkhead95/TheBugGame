@@ -7,6 +7,7 @@
 
 #ifndef ANIMAL_H_
 #define ANIMAL_H_
+#include <utility>
 
 using namespace std;
 
@@ -14,12 +15,13 @@ class Animal
 {
 
 protected:
-	int position[2];
+	int xCoord, yCoord;
 
 public:
 	Animal();
 	void setHeight(int newHeight);
 	void setLength(int newLength);
+	pair<int, int> getPosition();
 	~Animal();
 
 };

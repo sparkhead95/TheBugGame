@@ -8,9 +8,14 @@
 #ifndef GRID_H_
 #define GRID_H_
 
+#include <vector>
+#include "Animal.h"
+
 class Grid {
+protected:
 	int length, height;
 	char *** grid;
+
 
 	public:
 		Grid();
@@ -19,7 +24,7 @@ class Grid {
 
 		void write();
 
-		void create();
+		void create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector);
 
 		int getLength();
 

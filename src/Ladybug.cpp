@@ -7,20 +7,19 @@
 
 #include "Animal.h"
 
-	Ladybug::Ladybug(){
+Ladybug::Ladybug() {
+	xCoord = 0;
+	yCoord = 0;
+}
 
-	}
+Ladybug::Ladybug(int posX, int posY) {
+	xCoord = posX;
+	yCoord = posY;
+}
 
-	Ladybug::Ladybug(int posX, int posY){
+//Aphid update() {
+//	Aphid updatedAphid = new Aphid;
 
-
-	}
-
-
-	//Aphid update() {
-	//	Aphid updatedAphid = new Aphid;
-
-
-	//	return updatedAphid;
-	//}
+//	return updatedAphid;
+//}
 

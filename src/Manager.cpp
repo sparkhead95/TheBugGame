@@ -73,7 +73,7 @@ void Manager::runPreReqs() {
 	}
 
 	// now that we have all of the locations for the animals, draw the grid.
-	newGrid.create();
+	newGrid.create(aphidVector, ladyVector);
 
 	// close the grid config
 	gridConfig.close();

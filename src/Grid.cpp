@@ -21,24 +21,35 @@ Grid::Grid(int new_height, int new_length) {
 	this->length = new_length;
 }
 
+// might not even use this method
 void Grid::write() {
-	vector<string> horizontal(this->height);
-	unsigned int j;
-	for (j = 0; j < horizontal.size(); j++) {
-		vector<string> lengthways(this->length);
-		unsigned int i;
-		for (i = 0; i < lengthways.size(); i++)
-			lengthways.at(i) = "||";
 
-		for (i = 0; i < lengthways.size(); i++)
-			cout << " " << lengthways.at(i);
-
-		cout << endl;
-	}
 }
 
-void Grid::create() {
+void Grid::create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector) {
+	vector<string> horizontal(this->height);
+	unsigned int j;
+	for (vector<Aphid>::iterator aphIt = aphidVector.begin();
+			aphIt != aphidVector.end(); ++aphIt) {
 
+		pair<int, int> temp_pos = (*aphIt).getPosition();
+		for (j = 0; j < horizontal.size(); j++) {
+			if (j == temp_pos.first) {
+				vector<string> lengthways(this->length);
+				unsigned int i;
+				for (i = 0; i < lengthways.size(); i++)
+					if (i == temp_pos.second) {
+						lengthways.at(i) = "|A|";
+					} else {
+						lengthways.at(i) = "|-|";
+					}
+
+				for (i = 0; i < lengthways.size(); i++)
+					cout << " " << lengthways.at(i);
+				cout << endl;
+			}
+		}
+	}
 }
 
 int Grid::getHeight() {
