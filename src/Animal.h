@@ -34,7 +34,7 @@ public:
 };
 
 class Ladybug : public Animal {
-
+public:
 	Ladybug();
 	Ladybug(int posX, int posY);
 

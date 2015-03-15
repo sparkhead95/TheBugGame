@@ -14,7 +14,7 @@
 
 using namespace std;
 
-int gridLength, gridHeight, aphidNum, tempX, tempY;
+int gridLength, gridHeight, aphidNum, ladyNum, tempX, tempY;
 
 // Default constructor
 Manager::Manager() {
@@ -60,6 +60,20 @@ void Manager::runPreReqs() {
 		aphidVector[i].setHeight(tempX);
 		aphidVector[i].setLength(tempY);
 	}
+	// Take the amount of ladybugs from the config
+	gridConfig >> ladyNum;
+	// create a vector of ladbug objects
+	vector<Ladybug> ladyVector(ladyNum);
+	// same for loop but for ladybugs
+	for (int j = 0; j < ladyNum; j++){
+		gridConfig >> tempX;
+		gridConfig >> tempY;
+		ladyVector[j].setHeight(tempX);
+		ladyVector[j].setLength(tempX);
+	}
+
+	// now that we have all of the locations for the animals, draw the grid.
+	newGrid.create();
 
 	// close the grid config
 	gridConfig.close();

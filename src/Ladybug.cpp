@@ -7,7 +7,14 @@
 
 #include "Animal.h"
 
+	Ladybug::Ladybug(){
 
+	}
+
+	Ladybug::Ladybug(int posX, int posY){
+
+
+	}
 
 
 	//Aphid update() {
