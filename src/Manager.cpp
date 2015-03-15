@@ -10,54 +10,63 @@
 #include <vector>
 #include "Manager.h"
 #include "Grid.h"
+#include "Animal.h"
 
 using namespace std;
 
 int gridLength, gridHeight, aphidNum, tempX, tempY;
 
-	Manager::Manager(){
+Manager::Manager() {
 
+}
+
+void Manager::runPreReqs() {
+	ifstream gridConfig;
+	gridConfig.open("gridConfig.txt");
+	//char output[100]; -- this line is required if we want to print file contents.
+	if (gridConfig.is_open()) {
+		/*
+		 * Below is the code to print out the contents of the txt file.
+		 while (!gridConfig.eof()) {
+		 gridConfig >> output;
+		 cout<<output;
+		 }*/
+		cout << "File opened.\n";
+		gridConfig >> gridLength;
+		gridConfig >> gridHeight;
+
+	} else if ((gridConfig.is_open()) == false) {
+		cout << "Could not locate/open file.\n";
 	}
 
-	void Manager::runPreReqs() {
-		ifstream gridConfig;
-		gridConfig.open("gridConfig.txt");
-		//char output[100]; -- this line is required if we want to print file contents.
-		if (gridConfig.is_open()) {
-			/*
-			 * Below is the code to print out the contents of the txt file.
-			while (!gridConfig.eof()) {
-			gridConfig >> output;
-			cout<<output;
-			}*/
-			cout<<"File opened.\n";
-			gridConfig>>gridLength;
-			gridConfig>>gridHeight;
+	Grid newGrid(gridLength, gridHeight);
+	newGrid.write();
+	gridConfig >> aphidNum;
 
-		}
-		else if ((gridConfig.is_open()) == false) {
-			cout << "Could not locate/open file.\n";
-		}
+	gridConfig >> aphidNum;
+	/*vector<Aphid> aphidVector(aphidNum);
+	 for (int i = 0; i < aphidNum; i++) {
+	 gridConfig >> tempX;
+	 gridConfig >> tempY;
+	 aphidVector[i].setHeight(tempX);
+	 aphidVector[i].setLength(tempY);
+	 }*/
+	vector<string> horizontal(10);
+		unsigned int j;
+		for (j = 0; j < horizontal.size(); j++) {
+			vector<string> lengthways(10);
+			unsigned int i;
+			for (i = 0; i < lengthways.size(); i++)
+				lengthways.at(i) = "||";
 
-		Grid newGrid(gridLength, gridHeight);
+			for (i = 0; i < lengthways.size(); i++)
+				cout << " " << lengthways.at(i);
 
-		gridConfig>>aphidNum;
-
-		gridConfig >> aphidNum;
-		vector<Aphid> aphidVector(aphidNum);
-		for (int i = 0; i < aphidNum; i++)
-		{
-		gridConfig >> tempX;
-		gridConfig >> tempY;
-		//string temp_name;
-		//cout << "Please enter a name for this aphid: ";
-		//cin >> temp_name;
-		//Aphid temp_aphid(temp_pos1, temp_pos2);
-		//aphidMap[temp_name] = temp_aphid;
-		aphidVector[i].setHeight(tempX);
-		aphidVector[i].setLength(tempY);
+			cout << endl;
 		}
 
-		gridConfig.close();
 
-	}
+
+	gridConfig.close();
+
+}

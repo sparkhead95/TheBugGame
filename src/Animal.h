@@ -13,6 +13,11 @@ using namespace std;
 class Animal
 {
 
+protected:
+	int position[2];
+
+public:
+	Animal();
 	void setHeight(int newHeight);
 	void setLength(int newLength);
 
@@ -20,7 +25,7 @@ class Animal
 };
 
 class Aphid : public Animal {
-
+public:
 	Aphid();
 	Aphid(int posX, int posY);
 
