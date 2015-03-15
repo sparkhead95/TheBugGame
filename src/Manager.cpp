@@ -16,6 +16,7 @@ using namespace std;
 
 int gridLength, gridHeight, aphidNum, tempX, tempY;
 
+// Default constructor
 Manager::Manager() {
 
 }
@@ -27,31 +28,40 @@ void Manager::runPreReqs() {
 	if (gridConfig.is_open()) {
 		/*
 		 * Below is the code to print out the contents of the txt file.
+		 ===========================
 		 while (!gridConfig.eof()) {
 		 gridConfig >> output;
 		 cout<<output;
-		 }*/
+		 }
+		 ===========================
+		 */
 		cout << "File opened.\n";
+		// assign first line to local variables
 		gridConfig >> gridLength;
 		gridConfig >> gridHeight;
 
+		//validation for if the file fails to open
 	} else if ((gridConfig.is_open()) == false) {
 		cout << "Could not locate/open file.\n";
 	}
 
+	// Create a new grid with the dimensions passed in
 	Grid newGrid(gridLength, gridHeight);
+	// fill the grid with characters that are later to be changed
 	newGrid.write();
+	// Take the amount of aphids from the config and apply it to local variable
 	gridConfig >> aphidNum;
-
-	gridConfig >> aphidNum;
+	// create a vector of Aphid objects
 	vector<Aphid> aphidVector(aphidNum);
-	 for (int i = 0; i < aphidNum; i++) {
-	 gridConfig >> tempX;
-	 gridConfig >> tempY;
-	 aphidVector[i].setHeight(tempX);
-	 aphidVector[i].setLength(tempY);
-	 }
+	// for every aphid, set its location from the config file
+	for (int i = 0; i < aphidNum; i++) {
+		gridConfig >> tempX;
+		gridConfig >> tempY;
+		aphidVector[i].setHeight(tempX);
+		aphidVector[i].setLength(tempY);
+	}
 
+	// close the grid config
 	gridConfig.close();
 
 }

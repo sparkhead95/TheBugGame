@@ -7,7 +7,14 @@
 
 #include "Animal.h"
 
+	Aphid::Aphid(){
 
+	}
+
+	Aphid::Aphid(int posX, int posY){
+
+
+	}
 	//Aphid update() {
 	//	Aphid updatedAphid = new Aphid;
 
