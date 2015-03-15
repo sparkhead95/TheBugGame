@@ -8,9 +8,11 @@
 #include <fstream>
 #include <iostream>
 #include "Manager.h"
+#include "Grid.h"
+
 using namespace std;
 
-int gridLength, gridHeight;
+int gridLength, gridHeight, aphidNum;
 
 	Manager::Manager(){
 
@@ -35,6 +37,11 @@ int gridLength, gridHeight;
 		else if ((gridConfig.is_open()) == false) {
 			cout << "Could not locate/open file.\n";
 		}
+
+		Grid newGrid(gridLength, gridHeight);
+
+		gridConfig>>aphidNum;
+
 		gridConfig.close();
 
 	}
