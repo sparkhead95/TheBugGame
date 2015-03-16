@@ -45,9 +45,9 @@ void Grid::create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector) {
 						lengthways.at(i) = "|-|";
 					}
 
-				/*for (i = 0; i < lengthways.size(); i++)
+				for (i = 0; i < lengthways.size(); i++)
 				 cout << " " << lengthways.at(i);
-				 cout << endl;*/
+				 cout << endl;
 				 }
 			}
 		}
@@ -65,11 +65,13 @@ void Grid::create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector) {
 						if (i == temp_pos.second) {
 							lengthways.at(i) = "|L|";
 						} else {
-							//lengthways.at(i) = "|-|";
+							if (lengthways.at(i) != "|A|"){
+								lengthways.at(i) = "|-|";
+							}
 						}
 
-					vector<string> finalhorizontal(this->height);
-					vector<string> lengthways(this->length);
+					//vector<string> finalhorizontal(this->height);
+					//vector<string> lengthways(this->length);
 
 					for (i = 0; i < lengthways.size(); i++)
 						cout << " " << lengthways.at(i);
