@@ -28,25 +28,28 @@ void Grid::write() {
 
 void Grid::create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector) {
 	// ============= Aphid initial draw section ============================
-	vector<string> horizontal(this->height);
-	vector<string> lengthways(this->length);
+	vector<string> vertical(this->height);
+	vector<string> horizontal(this->length);
 	unsigned int j;
+	string aphid = "|A|";
+	string ladybug = "|L|";
+	string empty = "|-|";
 	for (vector<Aphid>::iterator aphIt = aphidVector.begin();
 			aphIt != aphidVector.end(); ++aphIt) {
 
 		pair<int, int> temp_pos = (*aphIt).getPosition();
-		for (j = 0; j < horizontal.size(); j++) {
+		for (j = 0; j < vertical.size(); j++) {
 			if (j == temp_pos.first) {
 				unsigned int i;
-				for (i = 0; i < lengthways.size(); i++)
+				for (i = 0; i < horizontal.size(); i++)
 					if (i == temp_pos.second) {
-						lengthways.at(i) = "|A|";
+						horizontal.at(i) = aphid;
 					} else {
-						lengthways.at(i) = "|-|";
+						horizontal.at(i) = empty;
 					}
 
-				for (i = 0; i < lengthways.size(); i++)
-				 cout << " " << lengthways.at(i);
+				for (i = 0; i < horizontal.size(); i++)
+				 cout << " " << horizontal.at(i);
 				 cout << endl;
 				 }
 			}
@@ -58,23 +61,23 @@ void Grid::create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector) {
 		for (vector<Ladybug>::iterator ladIt = ladyVector.begin();
 				ladIt != ladyVector.end(); ++ladIt) {
 			pair<int, int> temp_pos = (*ladIt).getPosition();
-			for (j = 0; j < horizontal.size(); j++) {
+			for (j = 0; j < vertical.size(); j++) {
 				if (j == temp_pos.first) {
 					unsigned int i;
-					for (i = 0; i < lengthways.size(); i++)
+					for (i = 0; i < horizontal.size(); i++)
 						if (i == temp_pos.second) {
-							lengthways.at(i) = "|L|";
+							horizontal.at(i) = ladybug;
 						} else {
-							if (lengthways.at(i) != "|A|"){
-								lengthways.at(i) = "|-|";
+							if (horizontal.at(i).compare(aphid) != 0){
+								horizontal.at(i) = empty;
 							}
 						}
 
 					//vector<string> finalhorizontal(this->height);
 					//vector<string> lengthways(this->length);
 
-					for (i = 0; i < lengthways.size(); i++)
-						cout << " " << lengthways.at(i);
+					for (i = 0; i < horizontal.size(); i++)
+						cout << " " << horizontal.at(i);
 					cout << endl;
 				}
 			}
