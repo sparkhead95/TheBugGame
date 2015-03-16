@@ -23,89 +23,71 @@ Grid::Grid(int new_height, int new_length) {
 
 // might not even use this method
 void Grid::write() {
+	/*vector<string> row(this->length, "|-|");
+	 vector<vector<string> > board(this->height, row);
+	 for (vector<Aphid>::iterator aphIt = aphidVector.begin();
+	 aphIt != aphidVector.end(); ++aphIt) {
+
+	 pair<int, int> temp_pos = (*aphIt).getPosition();
+	 board[temp_pos.first()][temp_pos.second()] = "|A|";
+	 }
+
+	 for (vector<Ladybug>::iterator ladIt = ladyVector.begin();
+	 ladIt != ladyVector.end(); ++ladIt) {
+
+	 pair<int, int> temp_pos = (*ladIt).getPosition();
+	 board[temp_pos.first()][temp_pos.second()] = "|L|";
+	 }
+
+	 for (unsigned int i = 0; i < board.size(); i++)
+	 cout << " " << board.at(i);
+	 cout << endl;
+	 */
 
 }
 
 void Grid::create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector) {
-	vector<string> row(this->length, "|-|");
-	vector<vector<string> > board(this->height, row);
+	string aphid = "|A|";
+	string ladybug = "|L|";
+	string empty = "|-|";
+	vector<string> vertical(this->height, empty);
+	vector<string> horizontal(this->length, empty);
+	unsigned int j;
+	vector<Ladybug>::iterator ladIt = ladyVector.begin();
 	for (vector<Aphid>::iterator aphIt = aphidVector.begin();
-			aphIt != aphidVector.end(); ++aphIt) {
+			aphIt != aphidVector.end() && ladIt != ladyVector.end();
+			++aphIt, ++ladIt) {
 
 		pair<int, int> temp_pos = (*aphIt).getPosition();
-		board[temp_pos.first()][temp_pos.second()] = "|A|";
+		pair<int, int> temp_pos_l = (*ladIt).getPosition();
+		for (j = 0; j < vertical.size(); j++) {
+			if (j == temp_pos.first) {
+				unsigned int i;
+				for (i = 0; i < horizontal.size(); i++)
+					if (i == temp_pos.second) {
+						horizontal.at(i) = aphid;
+					} else {
+						horizontal.at(i) = empty;
+					}
+
+				for (i = 0; i < horizontal.size(); i++) {
+					if (temp_pos.second == i)
+						cout << "|A|";
+					else
+						cout << "| |";
+
+					if (temp_pos_l.second == i && temp_pos_l.first == j)
+						cout << "|L|";
+					else
+						cout << "| |";
+				}
+				cout << endl;
+			}
+		}
 	}
-
-	for (vector<Ladybug>::iterator ladIt = ladyVector.begin();
-			ladIt != ladyVector.end(); ++ladIt) {
-
-		pair<int, int> temp_pos = (*ladIt).getPosition();
-		board[temp_pos.first()][temp_pos.second()] = "|L|";
-	}
-
-	for (unsigned int i = 0; i < board.size(); i++)
-		cout << " " << board.at(i);
 	cout << endl;
-
+	// ========================================================
 }
-
-/*// ============= Aphid initial draw section ============================
- vector<string> vertical(this->height);
- vector<string> horizontal(this->length);
- unsigned int j;
- string aphid = "|A|";
- string ladybug = "|L|";
- string empty = "|-|";
- for (vector<Aphid>::iterator aphIt = aphidVector.begin();
- aphIt != aphidVector.end(); ++aphIt) {
-
- pair<int, int> temp_pos = (*aphIt).getPosition();
- for (j = 0; j < vertical.size(); j++) {
- if (j == temp_pos.first) {
- unsigned int i;
- for (i = 0; i < horizontal.size(); i++)
- if (i == temp_pos.second) {
- horizontal.at(i) = aphid;
- } else {
- horizontal.at(i) = empty;
- }
-
- for (i = 0; i < horizontal.size(); i++)
- cout << " " << horizontal.at(i);
- cout << endl;
- }
- }
- }
- // ========================================================
-
- //  ============= ladybug initial draw section ==============
-
- for (vector<Ladybug>::iterator ladIt = ladyVector.begin();
- ladIt != ladyVector.end(); ++ladIt) {
- pair<int, int> temp_pos = (*ladIt).getPosition();
- for (j = 0; j < vertical.size(); j++) {
- if (j == temp_pos.first) {
- unsigned int i;
- for (i = 0; i < horizontal.size(); i++)
- if (i == temp_pos.second) {
- horizontal.at(i) = ladybug;
- } else {
- if (horizontal.at(i).compare(aphid) != 0) {
- horizontal.at(i) = empty;
- }
- }
-
- //vector<string> finalhorizontal(this->height);
- //vector<string> lengthways(this->length);
- for (unsigned int i = 0; i < horizontal.size(); i++)
- cout << " " << horizontal.at(i);
- cout << endl;
-
- }
-
- }
- }
- // ========================================================*/
 
 int Grid::getHeight() {
 	return this->height;
