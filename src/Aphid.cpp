@@ -27,12 +27,16 @@ Aphid::Aphid(int posX, int posY) {
 
 void Aphid::Move(Configuration thisConf, int gridLength, int gridHeight) {
 	Mathematics m;
-	pair<int, int> new_pos = m.Direction(this->xCoord, this->yCoord, gridLength, gridHeight);
+	pair<int, int> new_pos = m.AphidDirection(this->xCoord, this->yCoord, gridLength, gridHeight);
 	this->xCoord = new_pos.first;
 	this->yCoord = new_pos.second;
 }
 
 
 void Aphid::Kill() {
+
+}
+
+void Aphid::Interact(){
 
 }

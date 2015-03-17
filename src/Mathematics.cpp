@@ -21,7 +21,8 @@ Mathematics::~Mathematics() {
 	// TODO Auto-generated destructor stub
 }
 
-pair<int, int> Mathematics::Direction(int xCoord, int yCoord, int gridLength, int gridHeight) {
+pair<int, int> Mathematics::AphidDirection(int xCoord, int yCoord, int gridLength,
+		int gridHeight) {
 	pair<int, int> finalCoords;
 	int direction = 0;
 	bool analyse = true;
@@ -60,8 +61,7 @@ pair<int, int> Mathematics::Direction(int xCoord, int yCoord, int gridLength, in
 			xCoord--;
 			break;
 		}
-		if (yCoord >= gridHeight || yCoord <= 0
-				|| xCoord >= gridLength || xCoord <= 0) {
+		if (Boundary(gridLength, gridHeight, xCoord, yCoord)) {
 			xCoord = old[0];
 			yCoord = old[1];
 		} else {
@@ -71,6 +71,18 @@ pair<int, int> Mathematics::Direction(int xCoord, int yCoord, int gridLength, in
 	finalCoords.first = xCoord;
 	finalCoords.second = yCoord;
 	return finalCoords;
+}
+
+bool Mathematics::Boundary(int gridLength, int gridHeight, int xCoord,
+		int yCoord) {
+	bool boundary = false;
+	if (yCoord >= gridHeight || yCoord <= 0 || xCoord >= gridLength
+			|| xCoord <= 0) {
+		boundary = true;
+	}
+	else{
+	}
+	return boundary;
 }
 
 } /* namespace std */

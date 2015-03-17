@@ -33,7 +33,7 @@ public:
 	Aphid(int posX, int posY);
 	void Move(Configuration thisConf, int gridLength, int gridHeight);
 	void Kill();
-
+	void Interact();
 
 };
 

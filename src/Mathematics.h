@@ -8,7 +8,6 @@
 #ifndef MATHEMATICS_H_
 #define MATHEMATICS_H_
 
-
 #include <utility>
 namespace std {
 
@@ -16,7 +15,9 @@ class Mathematics {
 public:
 	Mathematics();
 	virtual ~Mathematics();
-	pair<int, int> Direction(int xCoord, int yCoord, int gridLength, int gridHeight);
+	pair<int, int> AphidDirection(int xCoord, int yCoord, int gridLength,
+			int gridHeight);
+	bool Boundary(int gridLength, int gridHeight, int xCoord, int yCoord);
 };
 
 } /* namespace std */
