@@ -21,6 +21,15 @@ cell::cell(int posX, int posY) {
 	this->yCoord = posY;
 }
 
+int cell::getX(){
+	return (this->xCoord);
+}
+
+int cell::getY(){
+	return (this->YCoord);
+}
+
+
 string cell::AphidPresent() {
 	string retValue = "-";
 //	This function returns a string depending on whether there's an aphid present
@@ -44,14 +53,15 @@ string cell::LadybugPresent() {
 string cell::GetCellContents() {
 	string cellContents;
 	stringstream sstrm;
-	if (cellAphids.size() != 0) {
-		sstrm << "|" << cellAphids.size() << AphidPresent() << ":"
+	sstrm << "|" << cellAphids.size() << AphidPresent() << ":"
 				<< LadybugPresent() << cellLadys.size() << "|";
+	/*if (cellAphids.size() != 0) {
+
 
 	} else if(cellAphids.size() == 0) {
 		sstrm << "|" << "-" << AphidPresent() << ":" << LadybugPresent()
 				<< cellLadys.size() << "|";
-	}
+	}*/
 	/*if (cellLadys.size() != 0) {
 		sstrm << "|" << cellAphids.size() << AphidPresent() << ":"
 				<< LadybugPresent() << cellLadys.size() << "|";

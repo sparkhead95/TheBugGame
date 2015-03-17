@@ -1,0 +1,4 @@
+The problem is that a NEW cell is being created every time we loop through an aphid or a ladybug. 
+
+The solution would be to hold a vector of the existing (already created) Cell objects and if their position (local x and y variables) match the position of the animal,
+do NOT create a NEW cell, simply reference the index of the already created cell (within the "existingCell" vector) and add the animal to the local vector within.

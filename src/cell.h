@@ -32,6 +32,8 @@ public:
 	void InsertLadybug(Ladybug newLadybug);
 	void RemoveAphid(Aphid thisAphid);
 	void RemoveLadybug(Ladybug thisLadybug);
+	int getX();
+	int getY();
 };
 
 #endif /* CELL_H_ */

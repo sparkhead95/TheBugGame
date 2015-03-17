@@ -30,10 +30,23 @@ void Grid::create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector) {
 			aphIt != aphidVector.end(); ++aphIt) {
 
 		pair<int, int> temp_pos = (*aphIt).getPosition();
-		cell movingTo(temp_pos.first, temp_pos.second);
-		movingTo.InsertAphid(*aphIt);
-		vector<string> & row = board.at(temp_pos.first);
-		row.at(temp_pos.second) = movingTo.GetCellContents();
+		// we create a temporary cell because if there is already a cell at its location we don't want to create two-
+		// so we can rid ourselves of this one if necessary.
+		cell tempCell(temp_pos.first, temp_pos.second);
+		if (cellExists(tempCell) != NULL) {
+			cell existingCell = cellExists(tempCell);
+			existingCell.InsertAphid(*aphIt);
+			existingCells.push_back(existingCell);
+			vector<string> & row = board.at(temp_pos.first);
+			row.at(temp_pos.second) = existingCell.GetCellContents();
+		} else {
+			cell movingTo(temp_pos.first, temp_pos.second);
+			movingTo.InsertAphid(*aphIt);
+			existingCells.push_back(movingTo);
+			vector<string> & row = board.at(temp_pos.first);
+			row.at(temp_pos.second) = movingTo.GetCellContents();
+		}
+
 		//cout << "inserted an aphid at " << temp_pos.first << "," << temp_pos.second << endl;
 	}
 
@@ -66,4 +79,17 @@ int Grid::getHeight() {
 
 int Grid::getLength() {
 	return this->length;
+}
+
+cell Grid::cellExists(cell checkCell) {
+	bool exists = false;
+	cell existingCell(NULL,NULL);
+	for (vector<cell>::iterator cellIt = existingCells.begin();
+			cellIt != existingCells.end(); ++cellIt) {
+		if ((checkCell.getX()  == (*cellIt).getX()) && (checkCell.getY() == (*cellIt).getY())) {
+			exists = true;
+			existingCell = (*cellIt);
+		}
+	}
+	return existingCell;
 }
