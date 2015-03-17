@@ -21,10 +21,10 @@ Ladybug::Ladybug(int posX, int posY) {
 void Ladybug::Move(Configuration thisConf, int gridLength, int gridHeight, Ladybug thisLad) {
 	Mathematics m;
 	pair<int, int> new_pos = m.LadyDirection(this->xCoord, this->yCoord, gridLength, gridHeight);
-	/*cell movingTo(new_pos.first, new_pos.second);
+	cell movingTo(new_pos.first, new_pos.second);
 	movingTo.InsertAphid(thisAph);
 	cell currentCell(this->xCoord, this->yCoord);
 	currentCell.RemoveAphid(thisAph);
 	this->xCoord = new_pos.first;
-	this->yCoord = new_pos.second;*/
+	this->yCoord = new_pos.second;
 }

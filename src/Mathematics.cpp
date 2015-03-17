@@ -80,15 +80,52 @@ pair<int, int> Mathematics::LadyDirection(int xCoord, int yCoord,
 	// ...
 	srand(time(0));
 	int superPath = rand() % (4);
-	int subPath = rand() % (3);
+	int subPath = rand() % (2);
 	switch (superPath) {
 	case (0): //up
-
+		yCoord--;
+		switch (subPath) {
+		case (0): // up-left
+			xCoord--;
+			break;
+		case (1):
+			xCoord++;
+			break; // up-right
+		}
+		break;
 	case (1): //right
-
+		xCoord++;
+		switch (subPath) {
+		case (0): // right-up
+			yCoord--;
+			break;
+		case (1):
+			yCoord++;
+			break; // right-down
+		}
+		break;
 	case (2): //down
-
+		yCoord++;
+		switch (subPath) {
+		case (0): // down-left
+			xCoord--;
+			break;
+		case (1):
+			xCoord++;
+			break; // down-right
+		}
+		break;
 	case (3): //left
+		xCoord--;
+		switch (subPath) {
+		case (0): // left-up
+			yCoord--;
+			break;
+		case (1):
+			xCoord++;
+			break; // left-right
+		}
+		break;
 	}
 	pair<int, int> finalCoords;
 	return finalCoords;
