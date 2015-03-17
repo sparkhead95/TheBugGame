@@ -11,7 +11,8 @@ CPP_SRCS += \
 ../src/Ladybug.cpp \
 ../src/Main.cpp \
 ../src/Manager.cpp \
-../src/Mathematics.cpp 
+../src/Mathematics.cpp \
+../src/cell.cpp 
 
 OBJS += \
 ./src/Animal.o \
@@ -21,7 +22,8 @@ OBJS += \
 ./src/Ladybug.o \
 ./src/Main.o \
 ./src/Manager.o \
-./src/Mathematics.o 
+./src/Mathematics.o \
+./src/cell.o 
 
 CPP_DEPS += \
 ./src/Animal.d \
@@ -31,7 +33,8 @@ CPP_DEPS += \
 ./src/Ladybug.d \
 ./src/Main.d \
 ./src/Manager.d \
-./src/Mathematics.d 
+./src/Mathematics.d \
+./src/cell.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
