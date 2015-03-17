@@ -94,6 +94,21 @@ bool Mathematics::FinaliseProbability(float unfinalisedProbability) {
 	}
 }
 
-
+pair<cell, bool> Mathematics::cellExists(cell checkCell, vector<cell> existingCells) {
+	bool exists = false;
+	cell existingCell;
+	for (vector<cell>::iterator cellIt = existingCells.begin();
+			cellIt != existingCells.end(); ++cellIt) {
+		if ((checkCell.getX() == (*cellIt).getX())
+				&& (checkCell.getY() == (*cellIt).getY())) {
+			exists = true;
+			existingCell = (*cellIt);
+			return make_pair(existingCell, true);
+		}
+	}
+	if (exists == false) {
+		return make_pair(existingCell, false);
+	}
+}
 
 } /* namespace std */

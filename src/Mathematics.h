@@ -9,6 +9,8 @@
 #define MATHEMATICS_H_
 
 #include <utility>
+#include "cell.h"
+
 namespace std {
 
 class Mathematics {
@@ -19,6 +21,7 @@ public:
 			int gridHeight);
 	bool Boundary(int gridLength, int gridHeight, int xCoord, int yCoord);
 	bool FinaliseProbability(float unfinalisedProbability);
+	pair<cell, bool> cellExists(cell checkCell, vector<cell> existingCells) ;
 };
 
 } /* namespace std */

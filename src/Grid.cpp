@@ -8,6 +8,7 @@
 #include "Grid.h"
 #include <string>
 #include <iostream>
+#include "Mathematics.h"
 #include "cell.h"
 
 using namespace std;
@@ -25,6 +26,7 @@ Grid::Grid(int new_height, int new_length) {
 void Grid::create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector) {
 	vector<vector<string> > board(this->height,
 			vector<string>(this->length, "| -:- |"));
+	Mathematics m;
 
 	for (vector<Aphid>::iterator aphIt = aphidVector.begin();
 			aphIt != aphidVector.end(); ++aphIt) {
@@ -33,8 +35,8 @@ void Grid::create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector) {
 		// we create a temporary cell because if there is already a cell at its location we don't want to create two-
 		// so we can rid ourselves of this one if necessary.
 		cell tempCell(temp_pos.first, temp_pos.second);
-		if (cellExists(tempCell).second == true) {
-			cell existingCell = cellExists(tempCell).first;
+		if (m.cellExists(tempCell, existingCells).second == true) {
+			cell existingCell = m.cellExists(tempCell, existingCells).first;
 			existingCell.InsertAphid(*aphIt);
 			existingCells.push_back(existingCell);
 			vector<string> & row = board.at(temp_pos.first);
@@ -56,8 +58,8 @@ void Grid::create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector) {
 
 		pair<int, int> temp_pos = (*ladIt).getPosition();
 		cell tempCell(temp_pos.first, temp_pos.second);
-		if (cellExists(tempCell).second == true) {
-			cell existingCell = cellExists(tempCell).first;
+		if (m.cellExists(tempCell, existingCells).second == true) {
+			cell existingCell = m.cellExists(tempCell, existingCells).first;
 			existingCell.InsertLadybug(*ladIt);
 			existingCells.push_back(existingCell);
 			vector<string> & row = board.at(temp_pos.first);
@@ -93,19 +95,4 @@ int Grid::getLength() {
 	return this->length;
 }
 
-pair<cell, bool> Grid::cellExists(cell checkCell) {
-	bool exists = false;
-	cell existingCell;
-	for (vector<cell>::iterator cellIt = existingCells.begin();
-			cellIt != existingCells.end(); ++cellIt) {
-		if ((checkCell.getX() == (*cellIt).getX())
-				&& (checkCell.getY() == (*cellIt).getY())) {
-			exists = true;
-			existingCell = (*cellIt);
-			return make_pair(existingCell, true);
-		}
-	}
-	if (exists == false) {
-		return make_pair(existingCell, false);
-	}
-}
+

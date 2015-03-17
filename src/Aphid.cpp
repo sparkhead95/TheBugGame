@@ -8,6 +8,7 @@
 #include "Configuration.h"
 #include "Animal.h"
 #include "Mathematics.h"
+#include "Grid.h"
 #include <string>
 #include <iostream>
 #include <stdio.h>
