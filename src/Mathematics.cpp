@@ -9,8 +9,8 @@
 #include <cstring>
 #include <stdio.h>
 #include <stdlib.h>
-#include<cstdlib>
-#include<ctime>
+#include <cstdlib>
+#include <ctime>
 
 namespace std {
 
@@ -79,8 +79,17 @@ pair<int, int> Mathematics::LadyDirection(int xCoord, int yCoord,
 		int gridLength, int gridHeight) {
 	// ...
 	srand(time(0));
-	int r = rand() % (3);
-	cout<<r;
+	int superPath = rand() % (4);
+	int subPath = rand() % (3);
+	switch (superPath) {
+	case (0): //up
+
+	case (1): //right
+
+	case (2): //down
+
+	case (3): //left
+	}
 	pair<int, int> finalCoords;
 	return finalCoords;
 }

@@ -42,7 +42,7 @@ public:
 	Ladybug();
 	Ladybug(int posX, int posY);
 	void Move(Configuration thisConf, int gridLength, int gridHeight,
-			Aphid thisAph);
+			Ladybug thisLad);
 	void Kill();
 	void Interact();
 
