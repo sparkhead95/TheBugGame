@@ -12,13 +12,14 @@
 #include "Grid.h"
 #include "Animal.h"
 #include "Configuration.h"
+#include "Mathematics.h"
 #include <iostream>
 #include <chrono>
 #include <thread>
 #include <stdlib.h>
 
 using namespace std;
-
+Mathematics myMath;
 float aphidMoveConf = 0, aphidKillConf = 0, aphIncKillConf = 0, aphidReproConf =
 		0, ladyMoveConf = 0, ladyDirConf = 0, ladyKillConf = 0, ladyReproConf =
 		0;
@@ -132,10 +133,9 @@ void Manager::runGame(vector<Aphid> aphidVector, vector<Ladybug> ladyVector,
 	while (true) {
 		for (vector<Aphid>::iterator aphIt = aphidVector.begin();
 				aphIt != aphidVector.end(); ++aphIt) {
-			if (finaliseProbability(initialConfig.getAphidMoveConf())) {
+			if (myMath.FinaliseProbability(initialConfig.getAphidMoveConf())) {
 				(*aphIt).Move(initialConfig, gridLength, gridHeight);
 			} else {
-				//cout << "It didn't happen this time.";
 			}
 		}
 		Grid newGrid;
@@ -145,11 +145,4 @@ void Manager::runGame(vector<Aphid> aphidVector, vector<Ladybug> ladyVector,
 	}
 }
 
-bool Manager::finaliseProbability(float unfinalisedProbability) {
-	float feasability = ((double) rand() / (RAND_MAX));
-	if (feasability <= unfinalisedProbability) {
-		return true;
-	} else {
-		return false;
-	}
-}
+

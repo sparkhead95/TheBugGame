@@ -18,6 +18,7 @@ public:
 	pair<int, int> AphidDirection(int xCoord, int yCoord, int gridLength,
 			int gridHeight);
 	bool Boundary(int gridLength, int gridHeight, int xCoord, int yCoord);
+	bool FinaliseProbability(float unfinalisedProbability);
 };
 
 } /* namespace std */

@@ -85,4 +85,15 @@ bool Mathematics::Boundary(int gridLength, int gridHeight, int xCoord,
 	return boundary;
 }
 
+bool Mathematics::FinaliseProbability(float unfinalisedProbability) {
+	float feasability = ((double) rand() / (RAND_MAX));
+	if (feasability <= unfinalisedProbability) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+
+
 } /* namespace std */
