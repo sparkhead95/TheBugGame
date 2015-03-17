@@ -15,9 +15,9 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
+#include <stdlib.h>
 
 using namespace std;
-
 
 float aphidMoveConf = 0, aphidKillConf = 0, aphIncKillConf = 0, aphidReproConf =
 		0, ladyMoveConf = 0, ladyDirConf = 0, ladyKillConf = 0, ladyReproConf =
@@ -26,7 +26,8 @@ vector<Ladybug> ladyVector;
 vector<Aphid> aphidVector;
 // Default constructor
 Manager::Manager() {
-	gridLength =0, gridHeight=0, aphidNum=0, ladyNum=0, tempX=0, tempY=0;
+	gridLength = 0, gridHeight = 0, aphidNum = 0, ladyNum = 0, tempX = 0, tempY =
+			0;
 }
 
 void Manager::runPreReqs() {
@@ -53,7 +54,7 @@ void Manager::runPreReqs() {
 	}
 
 	// Create a new grid with the dimensions passed in
-	Grid newGrid(gridLength, gridHeight);
+	Grid initialGrid(gridLength, gridHeight);
 	// Take the amount of aphids from the config and apply it to local variable
 	gridConfig >> aphidNum;
 	// resize aphid vector
@@ -78,9 +79,7 @@ void Manager::runPreReqs() {
 	}
 
 	// now that we have all of the locations for the animals, draw the grid.
-	newGrid.create(aphidVector, ladyVector);
-	// close the grid config
-	gridConfig.close();
+	initialGrid.create(aphidVector, ladyVector);
 
 	ifstream aphidConfig;
 	aphidConfig.open("aphidConfig.txt");
@@ -120,17 +119,37 @@ void Manager::runPreReqs() {
 	} else if ((ladyConfig.is_open()) == false) {
 		cout << "Could not locate/open file.\n";
 	}
-	Manager::runGame(aphidVector, ladyVector, initialConfig);
+	Manager::runGame(aphidVector, ladyVector, initialConfig, gridLength, gridHeight);
+	// close the grid config
+	gridConfig.close();
+	aphidConfig.close();
+	ladyConfig.close();
 }
 
-void Manager::runGame(vector<Aphid> aphidVector, vector<Ladybug> ladyVector, Configuration initialConfig) {
-	char end;
-	while (end != 'q' || 'Q') {
+void Manager::runGame(vector<Aphid> aphidVector, vector<Ladybug> ladyVector,
+		Configuration initialConfig, int gridLength, int gridHeight) {
+
+	while (true) {
 		for (vector<Aphid>::iterator aphIt = aphidVector.begin();
 				aphIt != aphidVector.end(); ++aphIt) {
-
-			(*aphIt).Move(initialConfig);
+			if (finaliseProbability(initialConfig.getAphidMoveConf())) {
+				(*aphIt).Move(initialConfig, gridLength, gridHeight);
+			} else {
+				//cout << "It didn't happen this time.";
+			}
 		}
+		Grid newGrid;
+		newGrid.create(aphidVector, ladyVector);
 		this_thread::sleep_for(chrono::milliseconds(2000));
+		//cin >> end;
+	}
+}
+
+bool Manager::finaliseProbability(float unfinalisedProbability) {
+	float feasability = ((double) rand() / (RAND_MAX));
+	if (feasability <= unfinalisedProbability) {
+		return true;
+	} else {
+		return false;
 	}
 }

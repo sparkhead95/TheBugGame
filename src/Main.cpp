@@ -19,9 +19,7 @@ int main(){
 
 Main::Main() {
 	cout << "Welcome to the Aphids and Ladybugs program!" << endl;
-	cin.get();
 	Manager manager;
-
 
 	manager.runPreReqs();
 }

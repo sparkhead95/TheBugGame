@@ -10,7 +10,8 @@ CPP_SRCS += \
 ../src/Grid.cpp \
 ../src/Ladybug.cpp \
 ../src/Main.cpp \
-../src/Manager.cpp 
+../src/Manager.cpp \
+../src/Mathematics.cpp 
 
 OBJS += \
 ./src/Animal.o \
@@ -19,7 +20,8 @@ OBJS += \
 ./src/Grid.o \
 ./src/Ladybug.o \
 ./src/Main.o \
-./src/Manager.o 
+./src/Manager.o \
+./src/Mathematics.o 
 
 CPP_DEPS += \
 ./src/Animal.d \
@@ -28,7 +30,8 @@ CPP_DEPS += \
 ./src/Grid.d \
 ./src/Ladybug.d \
 ./src/Main.d \
-./src/Manager.d 
+./src/Manager.d \
+./src/Mathematics.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

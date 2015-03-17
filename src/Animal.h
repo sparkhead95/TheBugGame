@@ -31,7 +31,7 @@ class Aphid : public Animal {
 public:
 	Aphid();
 	Aphid(int posX, int posY);
-	void Move(Configuration thisConf);
+	void Move(Configuration thisConf, int gridLength, int gridHeight);
 	void Kill();
 
 

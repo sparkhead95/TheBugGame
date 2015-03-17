@@ -1,0 +1,76 @@
+/*
+ * Mathematics.cpp
+ *
+ *  Created on: 17 Mar 2015
+ *      Author: chris
+ */
+
+#include "Mathematics.h"
+#include <cstring>
+#include <stdio.h>
+#include <stdlib.h>
+
+namespace std {
+
+Mathematics::Mathematics() {
+	// TODO Auto-generated constructor stub
+
+}
+
+Mathematics::~Mathematics() {
+	// TODO Auto-generated destructor stub
+}
+
+pair<int, int> Mathematics::Direction(int xCoord, int yCoord, int gridLength, int gridHeight) {
+	pair<int, int> finalCoords;
+	int direction = 0;
+	bool analyse = true;
+	int old[2];
+	old[0] = xCoord;
+	old[1] = yCoord;
+	while (analyse) {
+		direction = rand() % 7;
+		switch (direction) {
+		case (0): //Aphid goes up
+			yCoord--;
+			break;
+		case (1): //Aphid goes upright
+			yCoord--;
+			xCoord++;
+			break;
+		case (2): //Aphid goes right
+			xCoord++;
+			break;
+		case (3): //Aphid goes downright
+			yCoord++;
+			xCoord++;
+			break;
+		case (4): //Aphid goes down
+			yCoord++;
+			break;
+		case (5): //Aphid goes downleft
+			yCoord++;
+			xCoord--;
+			break;
+		case (6): //Aphid goes left
+			xCoord--;
+			break;
+		case (7): //Aphid goes upleft
+			yCoord--;
+			xCoord--;
+			break;
+		}
+		if (yCoord >= gridHeight || yCoord <= 0
+				|| xCoord >= gridLength || xCoord <= 0) {
+			xCoord = old[0];
+			yCoord = old[1];
+		} else {
+			analyse = false;
+		}
+	}
+	finalCoords.first = xCoord;
+	finalCoords.second = yCoord;
+	return finalCoords;
+}
+
+} /* namespace std */

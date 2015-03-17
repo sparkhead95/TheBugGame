@@ -21,7 +21,8 @@ protected:
 public:
 	Manager();
 	void runPreReqs();
-	void runGame(vector<Aphid> aphidVector, vector<Ladybug> ladyVector, Configuration initialConfig);
+	void runGame(vector<Aphid> aphidVector, vector<Ladybug> ladyVector, Configuration initialConfig, int gridLength, int gridHeight);
+	bool finaliseProbability(float unfinalisedProbability);
 };
 
 
