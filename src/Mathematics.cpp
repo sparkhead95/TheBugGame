@@ -9,6 +9,8 @@
 #include <cstring>
 #include <stdio.h>
 #include <stdlib.h>
+#include<cstdlib>
+#include<ctime>
 
 namespace std {
 
@@ -21,8 +23,8 @@ Mathematics::~Mathematics() {
 	// TODO Auto-generated destructor stub
 }
 
-pair<int, int> Mathematics::AphidDirection(int xCoord, int yCoord, int gridLength,
-		int gridHeight) {
+pair<int, int> Mathematics::AphidDirection(int xCoord, int yCoord,
+		int gridLength, int gridHeight) {
 	pair<int, int> finalCoords;
 	int direction = 0;
 	bool analyse = true;
@@ -73,14 +75,23 @@ pair<int, int> Mathematics::AphidDirection(int xCoord, int yCoord, int gridLengt
 	return finalCoords;
 }
 
+pair<int, int> Mathematics::LadyDirection(int xCoord, int yCoord,
+		int gridLength, int gridHeight) {
+	// ...
+	srand(time(0));
+	int r = rand() % (3);
+	cout<<r;
+	pair<int, int> finalCoords;
+	return finalCoords;
+}
+
 bool Mathematics::Boundary(int gridLength, int gridHeight, int xCoord,
 		int yCoord) {
 	bool boundary = false;
 	if (yCoord >= gridHeight || yCoord <= 0 || xCoord >= gridLength
 			|| xCoord <= 0) {
 		boundary = true;
-	}
-	else{
+	} else {
 	}
 	return boundary;
 }
@@ -94,7 +105,8 @@ bool Mathematics::FinaliseProbability(float unfinalisedProbability) {
 	}
 }
 
-pair<cell, bool> Mathematics::cellExists(cell checkCell, vector<cell> existingCells) {
+pair<cell, bool> Mathematics::cellExists(cell checkCell,
+		vector<cell> existingCells) {
 	bool exists = false;
 	cell existingCell;
 	for (vector<cell>::iterator cellIt = existingCells.begin();

@@ -21,7 +21,9 @@ public:
 			int gridHeight);
 	bool Boundary(int gridLength, int gridHeight, int xCoord, int yCoord);
 	bool FinaliseProbability(float unfinalisedProbability);
-	pair<cell, bool> cellExists(cell checkCell, vector<cell> existingCells) ;
+	pair<cell, bool> cellExists(cell checkCell, vector<cell> existingCells);
+	pair<int, int> LadyDirection(int xCoord, int yCoord, int gridLength,
+			int gridHeight);
 };
 
 } /* namespace std */

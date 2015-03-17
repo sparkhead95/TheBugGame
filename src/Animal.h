@@ -12,8 +12,7 @@
 
 using namespace std;
 
-class Animal
-{
+class Animal {
 
 protected:
 	int xCoord, yCoord;
@@ -27,21 +26,25 @@ public:
 
 };
 
-class Aphid : public Animal {
+class Aphid: public Animal {
 public:
 	Aphid();
 	Aphid(int posX, int posY);
-	void Move(Configuration thisConf, int gridLength, int gridHeight, Aphid thisAph);
+	void Move(Configuration thisConf, int gridLength, int gridHeight,
+			Aphid thisAph);
 	void Kill();
 	void Interact();
 
 };
 
-class Ladybug : public Animal {
+class Ladybug: public Animal {
 public:
 	Ladybug();
 	Ladybug(int posX, int posY);
-
+	void Move(Configuration thisConf, int gridLength, int gridHeight,
+			Aphid thisAph);
+	void Kill();
+	void Interact();
 
 };
 

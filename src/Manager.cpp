@@ -120,7 +120,8 @@ void Manager::runPreReqs() {
 	} else if ((ladyConfig.is_open()) == false) {
 		cout << "Could not locate/open file.\n";
 	}
-	Manager::runGame(aphidVector, ladyVector, initialConfig, gridLength, gridHeight);
+	Manager::runGame(aphidVector, ladyVector, initialConfig, gridLength,
+			gridHeight);
 	// close the grid config
 	gridConfig.close();
 	aphidConfig.close();
@@ -138,11 +139,17 @@ void Manager::runGame(vector<Aphid> aphidVector, vector<Ladybug> ladyVector,
 			} else {
 			}
 		}
+		for (vector<Ladybug>::iterator ladIt = ladyVector.begin();
+				ladIt != ladyVector.end(); ++ladIt) {
+			if (myMath.FinaliseProbability(initialConfig.getLadyMoveConf())) {
+				(*ladIt).Move(initialConfig, gridLength, gridHeight, (*ladIt));
+			} else {
+			}
+		}
 		Grid newGrid;
 		newGrid.create(aphidVector, ladyVector);
-		this_thread::sleep_for(chrono::milliseconds(2000));
+		this_thread::sleep_for(chrono::milliseconds(500));
 		//cin >> end;
 	}
 }
-
 
