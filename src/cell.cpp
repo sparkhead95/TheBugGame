@@ -26,7 +26,7 @@ int cell::getX(){
 }
 
 int cell::getY(){
-	return (this->YCoord);
+	return (this->yCoord);
 }
 
 

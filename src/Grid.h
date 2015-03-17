@@ -24,7 +24,7 @@ protected:
 		void create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector);
 		int getLength();
 		int getHeight();
-		cell cellExists(cell checkCell);
+		pair<cell,bool> cellExists(cell checkCell);
 
 };
 

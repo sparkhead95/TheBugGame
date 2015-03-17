@@ -33,8 +33,8 @@ void Grid::create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector) {
 		// we create a temporary cell because if there is already a cell at its location we don't want to create two-
 		// so we can rid ourselves of this one if necessary.
 		cell tempCell(temp_pos.first, temp_pos.second);
-		if (cellExists(tempCell) != NULL) {
-			cell existingCell = cellExists(tempCell);
+		if (cellExists(tempCell).second == true) {
+			cell existingCell = cellExists(tempCell).first;
 			existingCell.InsertAphid(*aphIt);
 			existingCells.push_back(existingCell);
 			vector<string> & row = board.at(temp_pos.first);
@@ -81,15 +81,19 @@ int Grid::getLength() {
 	return this->length;
 }
 
-cell Grid::cellExists(cell checkCell) {
+pair<cell,bool> Grid::cellExists(cell checkCell) {
 	bool exists = false;
-	cell existingCell(NULL,NULL);
+	cell existingCell;
 	for (vector<cell>::iterator cellIt = existingCells.begin();
 			cellIt != existingCells.end(); ++cellIt) {
-		if ((checkCell.getX()  == (*cellIt).getX()) && (checkCell.getY() == (*cellIt).getY())) {
+		if ((checkCell.getX() == (*cellIt).getX())
+				&& (checkCell.getY() == (*cellIt).getY())) {
 			exists = true;
 			existingCell = (*cellIt);
+			return make_pair(existingCell, true);
 		}
 	}
-	return existingCell;
+	if (exists == false){
+		return make_pair(existingCell, false);
+	}
 }
