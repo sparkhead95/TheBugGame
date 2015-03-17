@@ -44,8 +44,22 @@ string cell::LadybugPresent() {
 string cell::GetCellContents() {
 	string cellContents;
 	stringstream sstrm;
-	sstrm << "|" << cellAphids.size() << AphidPresent() << ":"
-			<< LadybugPresent() << cellLadys.size() << "|";
+	if (cellAphids.size() != 0) {
+		sstrm << "|" << cellAphids.size() << AphidPresent() << ":"
+				<< LadybugPresent() << cellLadys.size() << "|";
+
+	} else if(cellAphids.size() == 0) {
+		sstrm << "|" << "-" << AphidPresent() << ":" << LadybugPresent()
+				<< cellLadys.size() << "|";
+	}
+	/*if (cellLadys.size() != 0) {
+		sstrm << "|" << cellAphids.size() << AphidPresent() << ":"
+				<< LadybugPresent() << cellLadys.size() << "|";
+
+	} else if (cellLadys.size() == 0) {
+		sstrm << "|" << cellAphids.size() << AphidPresent() << ":" << LadybugPresent()
+				<< "-" << "|";
+	}*/
 	cellContents = sstrm.str();
 	return cellContents;
 }
@@ -58,9 +72,9 @@ void cell::InsertLadybug(Ladybug newLadybug) {
 	cellLadys.push_back(newLadybug);
 }
 
-void cell::RemoveAphid(Aphid thisAphid){
-	cellAphids.erase(remove(cellAphids.begin(),cellAphids.end(),thisAphid));
+void cell::RemoveAphid(Aphid thisAphid) {
+	//cellAphids.erase(cellAphids.begin(),cellAphids.end(),thisAphid);
 }
-void cell::RemoveLadybug(Ladybug thisLadybug){
-
+void cell::RemoveLadybug(Ladybug thisLadybug) {
+	//cellLadys.erase(cellLadys.begin(),cellLadys.end(),thisLadybug);
 }

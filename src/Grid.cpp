@@ -8,6 +8,7 @@
 #include "Grid.h"
 #include <string>
 #include <iostream>
+#include "cell.h"
 
 using namespace std;
 
@@ -25,34 +26,38 @@ void Grid::create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector) {
 	vector<vector<string> > board(this->height,
 			vector<string>(this->length, "| -:- |"));
 
-		for (vector<Aphid>::iterator aphIt = aphidVector.begin();
-				aphIt != aphidVector.end(); ++aphIt) {
+	for (vector<Aphid>::iterator aphIt = aphidVector.begin();
+			aphIt != aphidVector.end(); ++aphIt) {
 
-			pair<int, int> temp_pos = (*aphIt).getPosition();
-			vector<string> & row = board.at(temp_pos.first);
-			row.at(temp_pos.second) = "|1A:- |";
-			//cout << "inserted an aphid at " << temp_pos.first << "," << temp_pos.second << endl;
-		}
-
-		for (vector<Ladybug>::iterator ladIt = ladyVector.begin();
-				ladIt != ladyVector.end(); ++ladIt) {
-
-			pair<int, int> temp_pos = (*ladIt).getPosition();
-			vector<string> & row = board.at(temp_pos.first);
-			row.at(temp_pos.second) = "| -:L1|";
-			//cout << "inserted a ladybug at " << temp_pos.first << "," << temp_pos.second << endl;
-		}
-
-		for (unsigned int i = 0; i < board.size(); i++) {
-			vector<string> & row = board.at(i);
-			for (int j = 0; j < row.size(); j++) {
-				cout << " " << row.at(j);
-
-			}
-			cout << endl;
-		};
-		cout << endl;
+		pair<int, int> temp_pos = (*aphIt).getPosition();
+		cell movingTo(temp_pos.first, temp_pos.second);
+		movingTo.InsertAphid(*aphIt);
+		vector<string> & row = board.at(temp_pos.first);
+		row.at(temp_pos.second) = movingTo.GetCellContents();
+		//cout << "inserted an aphid at " << temp_pos.first << "," << temp_pos.second << endl;
 	}
+
+	for (vector<Ladybug>::iterator ladIt = ladyVector.begin();
+			ladIt != ladyVector.end(); ++ladIt) {
+
+		pair<int, int> temp_pos = (*ladIt).getPosition();
+		cell movingTo(temp_pos.first, temp_pos.second);
+		movingTo.InsertLadybug(*ladIt);
+		vector<string> & row = board.at(temp_pos.first);
+		row.at(temp_pos.second) = movingTo.GetCellContents();
+		//cout << "inserted a ladybug at " << temp_pos.first << "," << temp_pos.second << endl;
+	}
+
+	for (unsigned int i = 0; i < board.size(); i++) {
+		//find the row
+		vector<string> & row = board.at(i);
+		for (int j = 0; j < row.size(); j++) {
+			cout << " " << row.at(j);
+
+		}
+		cout << endl;
+	};
+	cout << endl;
 }
 
 int Grid::getHeight() {
