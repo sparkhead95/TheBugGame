@@ -21,11 +21,6 @@ Grid::Grid(int new_height, int new_length) {
 	this->length = new_length;
 }
 
-// might not even use this method
-void Grid::write() {
-
-}
-
 void Grid::create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector) {
 
 	vector<vector<char> > board(this->height, vector<char>(this->length, '-'));

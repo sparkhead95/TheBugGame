@@ -15,6 +15,7 @@ class Manager {
 public:
 	Manager();
 	void runPreReqs();
+	void runGame();
 };
 
 

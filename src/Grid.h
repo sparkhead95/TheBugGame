@@ -22,8 +22,6 @@ protected:
 
 		Grid(int gridlength, int gridHeight);
 
-		void write();
-
 		void create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector);
 
 		int getLength();
