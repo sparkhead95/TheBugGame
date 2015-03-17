@@ -16,9 +16,9 @@
 using namespace std;
 
 int gridLength, gridHeight, aphidNum, ladyNum, tempX, tempY;
-float aphidMoveConf = 0, aphidKillConf = 0, aphIncKillConf = 0,
-		aphidReproConf = 0, ladyMoveConf = 0, ladyDirConf = 0,
-		ladyKillConf = 0, ladyReproConf = 0;
+float aphidMoveConf = 0, aphidKillConf = 0, aphIncKillConf = 0, aphidReproConf =
+		0, ladyMoveConf = 0, ladyDirConf = 0, ladyKillConf = 0, ladyReproConf =
+		0;
 
 // Default constructor
 Manager::Manager() {
@@ -92,6 +92,8 @@ void Manager::runPreReqs() {
 		initialConfig.setAphIncKillConf(aphIncKillConf);
 		aphidConfig >> aphidReproConf;
 		initialConfig.setAphidReproConf(aphidReproConf);
+		// The below line checks that the data has been read into the class properly
+		//cout << (initialConfig.getAphidMoveConf()) << " " << (initialConfig.getAphidKillConf()) << " " << (initialConfig.getAphIncKillConf()) << " " << (initialConfig.getAphidReproConf()) << endl;
 		//validation for if the file fails to open
 	} else if ((aphidConfig.is_open()) == false) {
 		cout << "Could not locate/open file.\n";
@@ -103,9 +105,13 @@ void Manager::runPreReqs() {
 		//cout << "ladybug File opened.\n";
 		// assign first line to local variables
 		ladyConfig >> ladyMoveConf;
+		initialConfig.setLadyMoveConf(ladyMoveConf);
 		ladyConfig >> ladyDirConf;
+		initialConfig.setLadyDirConf(ladyDirConf);
 		ladyConfig >> ladyKillConf;
+		initialConfig.setLadyKillConf(ladyKillConf);
 		ladyConfig >> ladyReproConf;
+		initialConfig.setLadyReproConf(ladyReproConf);
 		//validation for if the file fails to open
 	} else if ((ladyConfig.is_open()) == false) {
 		cout << "Could not locate/open file.\n";
