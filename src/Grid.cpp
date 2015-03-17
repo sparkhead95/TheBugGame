@@ -23,30 +23,39 @@ Grid::Grid(int new_height, int new_length) {
 
 // might not even use this method
 void Grid::write() {
-	/*vector<string> row(this->length, "|-|");
-	 vector<vector<string> > board(this->height, row);
-	 for (vector<Aphid>::iterator aphIt = aphidVector.begin();
-	 aphIt != aphidVector.end(); ++aphIt) {
-
-	 pair<int, int> temp_pos = (*aphIt).getPosition();
-	 board[temp_pos.first()][temp_pos.second()] = "|A|";
-	 }
-
-	 for (vector<Ladybug>::iterator ladIt = ladyVector.begin();
-	 ladIt != ladyVector.end(); ++ladIt) {
-
-	 pair<int, int> temp_pos = (*ladIt).getPosition();
-	 board[temp_pos.first()][temp_pos.second()] = "|L|";
-	 }
-
-	 for (unsigned int i = 0; i < board.size(); i++)
-	 cout << " " << board.at(i);
-	 cout << endl;
-	 */
 
 }
 
 void Grid::create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector) {
+
+	vector<vector<char> > board(this->height, vector<char>(this->length, '-'));
+	for (vector<Aphid>::iterator aphIt = aphidVector.begin();
+			aphIt != aphidVector.end(); ++aphIt) {
+
+		pair<int, int> temp_pos = (*aphIt).getPosition();
+		vector<char> & row = board.at(temp_pos.first);
+		row.at(temp_pos.second) = 'A';
+		//cout << "inserted an aphid at " << temp_pos.first << "," << temp_pos.second << endl;
+	}
+
+	for (vector<Ladybug>::iterator ladIt = ladyVector.begin();
+			ladIt != ladyVector.end(); ++ladIt) {
+
+		pair<int, int> temp_pos = (*ladIt).getPosition();
+		vector<char> & row = board.at(temp_pos.first);
+		row.at(temp_pos.second) = 'L';
+		//cout << "inserted a ladybug at " << temp_pos.first << "," << temp_pos.second << endl;
+	}
+
+	for (unsigned int i = 0; i < board.size(); i++) {
+		vector<char> & row = board.at(i);
+		for (int j = 0; j < row.size(); j++) {
+			cout << " " << row.at(j);
+
+		}
+		cout << endl;
+	};
+	cout << endl;
 
 }
 
