@@ -8,6 +8,7 @@
 #ifndef ANIMAL_H_
 #define ANIMAL_H_
 #include <utility>
+#include "Configuration.h"
 
 using namespace std;
 
@@ -30,7 +31,8 @@ class Aphid : public Animal {
 public:
 	Aphid();
 	Aphid(int posX, int posY);
-
+	void Move(Configuration thisConf);
+	void Kill();
 
 
 };

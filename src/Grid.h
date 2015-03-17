@@ -14,7 +14,7 @@
 class Grid {
 protected:
 	int length, height;
-	char *** grid;
+
 
 
 	public:

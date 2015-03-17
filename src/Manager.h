@@ -11,7 +11,8 @@
 #define MANAGER_H
 
 class Manager {
-
+protected:
+	int gridLength, gridHeight, aphidNum, ladyNum, tempX, tempY;
 public:
 	Manager();
 	void runPreReqs();

@@ -12,17 +12,21 @@
 #include "Grid.h"
 #include "Animal.h"
 #include "Configuration.h"
+#include <iostream>
+#include <chrono>
+#include <thread>
 
 using namespace std;
 
-int gridLength, gridHeight, aphidNum, ladyNum, tempX, tempY;
+
 float aphidMoveConf = 0, aphidKillConf = 0, aphIncKillConf = 0, aphidReproConf =
 		0, ladyMoveConf = 0, ladyDirConf = 0, ladyKillConf = 0, ladyReproConf =
 		0;
-
+vector<Ladybug> ladyVector;
+vector<Aphid> aphidVector;
 // Default constructor
 Manager::Manager() {
-
+	gridLength =0, gridHeight=0, aphidNum=0, ladyNum=0, tempX=0, tempY=0;
 }
 
 void Manager::runPreReqs() {
@@ -52,8 +56,8 @@ void Manager::runPreReqs() {
 	Grid newGrid(gridLength, gridHeight);
 	// Take the amount of aphids from the config and apply it to local variable
 	gridConfig >> aphidNum;
-	// create a vector of Aphid objects
-	vector<Aphid> aphidVector(aphidNum);
+	// resize aphid vector
+	aphidVector.resize(aphidNum);
 	// for every aphid, set its location from the config file
 	for (int i = 0; i < aphidNum; i++) {
 		gridConfig >> tempX;
@@ -63,8 +67,8 @@ void Manager::runPreReqs() {
 	}
 	// Take the amount of ladybugs from the config
 	gridConfig >> ladyNum;
-	// create a vector of ladbug objects
-	vector<Ladybug> ladyVector(ladyNum);
+	// resize ladybug vector
+	ladyVector.resize(ladyNum);
 	// same for loop but for ladybugs
 	for (int j = 0; j < ladyNum; j++) {
 		gridConfig >> tempX;
@@ -120,5 +124,11 @@ void Manager::runPreReqs() {
 }
 
 void Manager::runGame() {
+	/*char end;
+	while (end != 'q' || 'Q') {
+		for (vector<Aphid>::iterator aphIt = this->aphidVector.begin();
+				aphIt != this->currentAphids.end(); ++aphIt) {
 
+		}
+	}*/
 }

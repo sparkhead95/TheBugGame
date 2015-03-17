@@ -1,4 +1,3 @@
-
 #include "Animal.h"
 using namespace std;
 

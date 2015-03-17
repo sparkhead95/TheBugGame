@@ -4,7 +4,7 @@
  *  Created on: 17 Mar 2015
  *      Author: chris
  */
-
+#include <stdlib.h>
 #include "Configuration.h"
 #include <string>
 #include <iostream>
@@ -12,14 +12,14 @@
 namespace std {
 
 Configuration::Configuration() {
-	aphidMoveConf = 0, aphidKillConf = 0, aphIncKillConf = 0, aphidReproConf =
+	aphidMoveConf = rand() % 7, aphidKillConf = 0, aphIncKillConf = 0, aphidReproConf =
 			0, ladyMoveConf = 0, ladyDirConf = 0, ladyKillConf = 0, ladyReproConf =
 			0;
 
 }
 
 Configuration::~Configuration() {
-	cout << "Config destroyed." << endl;
+	//cout << "Config destroyed." << endl;
 }
 
 // ================= Aphid config =======================

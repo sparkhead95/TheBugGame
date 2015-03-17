@@ -30,6 +30,6 @@ Main::Main() {
 }
 
 Main::~Main() {
-	cout << "Destructor called. Goodbye!" << endl;
+	cout << endl << "Goodbye!" << endl;
 }
 

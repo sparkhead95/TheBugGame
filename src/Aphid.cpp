@@ -5,6 +5,7 @@
  *      Author: chris
  */
 
+#include "Configuration.h"
 #include "Animal.h"
 
 	Aphid::Aphid(){
@@ -15,12 +16,14 @@
 	Aphid::Aphid(int posX, int posY){
 		xCoord = posX;
 		yCoord = posY;
+	}
+
+	void Aphid::Move(Configuration thisConf) {
+		float moveProb = thisConf.getAphidMoveConf();
 
 	}
-	//Aphid update() {
-	//	Aphid updatedAphid = new Aphid;
 
+	void Aphid::Kill(){
 
-	//	return updatedAphid;
-	//}
+	}
 
