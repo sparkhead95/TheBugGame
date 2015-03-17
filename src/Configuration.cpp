@@ -12,7 +12,7 @@
 namespace std {
 
 Configuration::Configuration() {
-	aphidMoveConf = rand() % 7, aphidKillConf = 0, aphIncKillConf = 0, aphidReproConf =
+	aphidMoveConf = 0, aphidKillConf = 0, aphIncKillConf = 0, aphidReproConf =
 			0, ladyMoveConf = 0, ladyDirConf = 0, ladyKillConf = 0, ladyReproConf =
 			0;
 

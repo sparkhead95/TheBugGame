@@ -7,6 +7,8 @@
 
 #include "Configuration.h"
 #include "Animal.h"
+#include <string>
+#include <iostream>
 
 	Aphid::Aphid(){
 		xCoord = 0;

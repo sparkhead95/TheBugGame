@@ -120,15 +120,17 @@ void Manager::runPreReqs() {
 	} else if ((ladyConfig.is_open()) == false) {
 		cout << "Could not locate/open file.\n";
 	}
-
+	Manager::runGame(aphidVector, ladyVector, initialConfig);
 }
 
-void Manager::runGame() {
-	/*char end;
+void Manager::runGame(vector<Aphid> aphidVector, vector<Ladybug> ladyVector, Configuration initialConfig) {
+	char end;
 	while (end != 'q' || 'Q') {
-		for (vector<Aphid>::iterator aphIt = this->aphidVector.begin();
-				aphIt != this->currentAphids.end(); ++aphIt) {
+		for (vector<Aphid>::iterator aphIt = aphidVector.begin();
+				aphIt != aphidVector.end(); ++aphIt) {
 
+			(*aphIt).Move(initialConfig);
 		}
-	}*/
+		this_thread::sleep_for(chrono::milliseconds(2000));
+	}
 }
