@@ -6,6 +6,7 @@
 CPP_SRCS += \
 ../src/Animal.cpp \
 ../src/Aphid.cpp \
+../src/Configuration.cpp \
 ../src/Grid.cpp \
 ../src/Ladybug.cpp \
 ../src/Main.cpp \
@@ -14,6 +15,7 @@ CPP_SRCS += \
 OBJS += \
 ./src/Animal.o \
 ./src/Aphid.o \
+./src/Configuration.o \
 ./src/Grid.o \
 ./src/Ladybug.o \
 ./src/Main.o \
@@ -22,6 +24,7 @@ OBJS += \
 CPP_DEPS += \
 ./src/Animal.d \
 ./src/Aphid.d \
+./src/Configuration.d \
 ./src/Grid.d \
 ./src/Ladybug.d \
 ./src/Main.d \

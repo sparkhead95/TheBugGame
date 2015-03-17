@@ -15,9 +15,9 @@
 using namespace std;
 
 int gridLength, gridHeight, aphidNum, ladyNum, tempX, tempY;
-float aphidMoveProb = 0, aphidKillProb = 0, aphincKillProb = 0,
-		aphidReproduceProb = 0, ladyMoveProb = 0, ladyDirectionProb = 0,
-		ladyKillProb = 0, ladyReproduceProb = 0;
+float aphidMoveConf = 0, aphidKillConf = 0, aphIncKillConf = 0,
+		aphidReproConf = 0, ladyMoveConf = 0, ladyDirConf = 0,
+		ladyKillConf = 0, ladyReproConf = 0;
 
 // Default constructor
 Manager::Manager() {
@@ -83,10 +83,10 @@ void Manager::runPreReqs() {
 	if (aphidConfig.is_open()) {
 		//cout << "aphid File opened.\n";
 		// assign first line to local variables
-		aphidConfig >> aphidMoveProb;
-		aphidConfig >> aphidKillProb;
-		aphidConfig >> aphincKillProb;
-		aphidConfig >> aphidReproduceProb;
+		aphidConfig >> aphidMoveConf;
+		aphidConfig >> aphidKillConf;
+		aphidConfig >> aphIncKillConf;
+		aphidConfig >> aphidReproConf;
 		//validation for if the file fails to open
 	} else if ((aphidConfig.is_open()) == false) {
 		cout << "Could not locate/open file.\n";
@@ -97,10 +97,10 @@ void Manager::runPreReqs() {
 	if (aphidConfig.is_open()) {
 		//cout << "ladybug File opened.\n";
 		// assign first line to local variables
-		ladyConfig >> ladyMoveProb;
-		ladyConfig >> ladyDirectionProb;
-		ladyConfig >> ladyKillProb;
-		ladyConfig >> ladyReproduceProb;
+		ladyConfig >> ladyMoveConf;
+		ladyConfig >> ladyDirConf;
+		ladyConfig >> ladyKillConf;
+		ladyConfig >> ladyReproConf;
 		//validation for if the file fails to open
 	} else if ((ladyConfig.is_open()) == false) {
 		cout << "Could not locate/open file.\n";
