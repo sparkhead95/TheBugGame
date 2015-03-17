@@ -21,14 +21,13 @@ cell::cell(int posX, int posY) {
 	this->yCoord = posY;
 }
 
-int cell::getX(){
+int cell::getX() {
 	return (this->xCoord);
 }
 
-int cell::getY(){
+int cell::getY() {
 	return (this->yCoord);
 }
-
 
 string cell::AphidPresent() {
 	string retValue = "-";
@@ -53,23 +52,27 @@ string cell::LadybugPresent() {
 string cell::GetCellContents() {
 	string cellContents;
 	stringstream sstrm;
-	sstrm << "|" << cellAphids.size() << AphidPresent() << ":"
-				<< LadybugPresent() << cellLadys.size() << "|";
-	/*if (cellAphids.size() != 0) {
 
-
-	} else if(cellAphids.size() == 0) {
-		sstrm << "|" << "-" << AphidPresent() << ":" << LadybugPresent()
-				<< cellLadys.size() << "|";
-	}*/
-	/*if (cellLadys.size() != 0) {
+	if ((cellAphids.size() != 0) && (cellLadys.size() != 0)) {
 		sstrm << "|" << cellAphids.size() << AphidPresent() << ":"
 				<< LadybugPresent() << cellLadys.size() << "|";
 
-	} else if (cellLadys.size() == 0) {
-		sstrm << "|" << cellAphids.size() << AphidPresent() << ":" << LadybugPresent()
-				<< "-" << "|";
-	}*/
+	} else if (cellAphids.size() == 0) {
+		sstrm << "|" << "-" << AphidPresent() << ":" << LadybugPresent()
+				<< cellLadys.size() << "|";
+	}
+	/*if (cellLadys.size() != 0) {
+	 sstrm << "|" << cellAphids.size() << AphidPresent() << ":"
+	 << LadybugPresent() << cellLadys.size() << "|";
+	 } else if (cellLadys.size() == 0) {
+	 sstrm << "|" << cellAphids.size() << AphidPresent() << ":" << LadybugPresent()
+	 << "-" << "|";
+	 }*/
+
+	if (cellLadys.size() == 0) {
+		sstrm << "|" << cellAphids.size() << AphidPresent() << ":"
+				<< LadybugPresent() << "-" << "|";
+	}
 	cellContents = sstrm.str();
 	return cellContents;
 }
