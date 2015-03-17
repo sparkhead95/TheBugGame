@@ -11,6 +11,7 @@
 #include "Manager.h"
 #include "Grid.h"
 #include "Animal.h"
+#include "Configuration.h"
 
 using namespace std;
 
@@ -79,14 +80,18 @@ void Manager::runPreReqs() {
 
 	ifstream aphidConfig;
 	aphidConfig.open("aphidConfig.txt");
-
+	Configuration initialConfig;
 	if (aphidConfig.is_open()) {
 		//cout << "aphid File opened.\n";
 		// assign first line to local variables
 		aphidConfig >> aphidMoveConf;
+		initialConfig.setAphidMoveConf(aphidMoveConf);
 		aphidConfig >> aphidKillConf;
+		initialConfig.setAphidKillConf(aphidKillConf);
 		aphidConfig >> aphIncKillConf;
+		initialConfig.setAphIncKillConf(aphIncKillConf);
 		aphidConfig >> aphidReproConf;
+		initialConfig.setAphidReproConf(aphidReproConf);
 		//validation for if the file fails to open
 	} else if ((aphidConfig.is_open()) == false) {
 		cout << "Could not locate/open file.\n";
