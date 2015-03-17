@@ -11,17 +11,27 @@
 #include <string>
 #include <iostream>
 #include <stdio.h>
+#include <vector>
 #include <stdlib.h>
+#include "Animal.h"
+
 using namespace std;
 class cell {
+protected:
+	vector<Aphid> cellAphids;
+	vector<Ladybug> cellLadys;
 
+	int xCoord, yCoord;
 public:
 	cell();
+	cell(int posX, int posY);
 	string AphidPresent();
-
-
+	string LadybugPresent();
+	string GetCellContents();
+	void InsertAphid(Aphid newAphid);
+	void InsertLadybug(Ladybug newLadybug);
+	void RemoveAphid(Aphid thisAphid);
+	void RemoveLadybug(Ladybug thisLadybug);
 };
-
-
 
 #endif /* CELL_H_ */

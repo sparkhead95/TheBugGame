@@ -24,19 +24,6 @@ Grid::Grid(int new_height, int new_length) {
 void Grid::create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector) {
 	vector<vector<string> > board(this->height,
 			vector<string>(this->length, "| -:- |"));
-	// checking if two are starting in the same place
-	vector<Ladybug>::iterator ladIt = ladyVector.begin();
-	for (vector<Aphid>::iterator aphIt = aphidVector.begin();
-			aphIt != aphidVector.end() && ladIt != ladyVector.end();
-			++aphIt, ++ladIt) {
-		pair<int, int> temp_pos = (*aphIt).getPosition();
-		pair<int, int> temp_pos_l = (*ladIt).getPosition();
-		if ((temp_pos.first == temp_pos_l.first)&&(temp_pos.second == temp_pos_l.second)) {
-			cout<<"Same!"<<endl;
-			vector<string> & row = board.at(temp_pos.first);
-			row.at(temp_pos.second) = "|1A:L1|";
-		}
-
 
 		for (vector<Aphid>::iterator aphIt = aphidVector.begin();
 				aphIt != aphidVector.end(); ++aphIt) {

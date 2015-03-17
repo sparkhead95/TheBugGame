@@ -134,7 +134,7 @@ void Manager::runGame(vector<Aphid> aphidVector, vector<Ladybug> ladyVector,
 		for (vector<Aphid>::iterator aphIt = aphidVector.begin();
 				aphIt != aphidVector.end(); ++aphIt) {
 			if (myMath.FinaliseProbability(initialConfig.getAphidMoveConf())) {
-				(*aphIt).Move(initialConfig, gridLength, gridHeight);
+				(*aphIt).Move(initialConfig, gridLength, gridHeight, (*aphIt));
 			} else {
 			}
 		}
