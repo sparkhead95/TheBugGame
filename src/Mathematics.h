@@ -29,6 +29,7 @@ public:
 	char Bounce(int gridLength, int gridHeight, int xCoord,
 			int yCoord);
 	int GetNewPreferredDirection();
+	int getRandomNumber(int min, int max);
 };
 
 } /* namespace std */

@@ -15,18 +15,18 @@ Ladybug::Ladybug() {
 }
 
 Ladybug::Ladybug(int posX, int posY) {
+	//Mathematics m;
 	xCoord = posX;
 	yCoord = posY;
-	srand(time(NULL));
-	preferredDir = rand() % (4);
-	srand(1);
+	//srand(time(NULL));
+	//srand(1);
 }
 
 void Ladybug::Move(Configuration thisConf, int gridLength, int gridHeight,
 		Ladybug thisLad) {
 	Mathematics m;
 	pair<int, int> new_pos = m.LadyDirection(this->xCoord, this->yCoord,
-			gridLength, gridHeight, preferredDir);
+			gridLength, gridHeight, thisLad.preferredDir);
 	cell movingTo(new_pos.first, new_pos.second);
 	movingTo.InsertLadybug(thisLad);
 	thisLad.setPreferredDir(m.GetNewPreferredDirection());

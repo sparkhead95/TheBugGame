@@ -143,7 +143,9 @@ void Manager::runGame(vector<Aphid> aphidVector, vector<Ladybug> ladyVector,
 		for (vector<Ladybug>::iterator ladIt = ladyVector.begin();
 				ladIt != ladyVector.end(); ++ladIt) {
 			if (myMath.FinaliseProbability(initialConfig.getLadyMoveConf())) {
+				(*ladIt).setPreferredDir(myMath.getRandomNumber(0,3));
 				(*ladIt).Move(initialConfig, gridLength, gridHeight, (*ladIt));
+
 				//cout<<endl<<"ladybug moved to "<<(*ladIt).getPosition().first<<" "<<(*ladIt).getPosition().second<<endl;
 			} else {
 			}

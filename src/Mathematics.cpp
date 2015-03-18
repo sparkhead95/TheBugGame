@@ -79,8 +79,10 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 		int gridLength, int gridHeight, int preferredDir) {
 	pair<int, int> newPosition;
 	srand(time(NULL));
-	int possibleAngle = rand() % (2), tmpX, tmpY;
-	srand(1);
+	int possibleAngle = getRandomNumber(0,2), tmpX, tmpY;
+	cout<<endl<<"Possible angle = "<<possibleAngle<<endl;
+	cout<<endl<<"Preferred direction = "<<preferredDir<<endl;
+	//srand(1);
 	tmpX = currentX;
 	tmpY = currentY;
 	if (preferredDir == 0) { // going up
@@ -128,17 +130,17 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 			tmpX++;
 			if (Bounce(gridLength, gridHeight, tmpX, tmpY) == 'l') { // if we cant go right anymore
 				preferredDir = 3; // change preferred direction to left
-				currentX++; // go left a place (always going left now)
+				currentX--; // go left a place (always going left now)
 				//cout << endl << "Bounced!" << endl;
 			} else {
-				currentY++;
+				currentX++;
 			}
 		} else if (possibleAngle == 1) { // upright
 			tmpX++;
 			tmpY--;
 			if ((Bounce(gridLength, gridHeight, tmpX, tmpY) == 'd')
 					|| (Bounce(gridLength, gridHeight, tmpX, tmpY) == 'l')) { // if we cant go up or right anymore
-				preferredDir = 2; // change preferred direction to down
+				preferredDir = 3; // change preferred direction to left
 				currentY++; //
 				currentX--; // go down left (bounce back)
 				//cout << endl << "Bounced!" << endl;
@@ -151,7 +153,7 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 			tmpY++;
 			if ((Bounce(gridLength, gridHeight, tmpX, tmpY) == 'u')
 					|| (Bounce(gridLength, gridHeight, tmpX, tmpY) == 'l')) { // if we cant go down or right anymore
-				preferredDir = 0; // change preferred direction to up
+				preferredDir = 3; // change preferred direction to left
 				currentY--; //
 				currentX--; // go up left (bounce back)
 				//cout << endl << "Bounced!" << endl;
@@ -180,8 +182,8 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 			if ((Bounce(gridLength, gridHeight, tmpX, tmpY) == 'u')
 					|| (Bounce(gridLength, gridHeight, tmpX, tmpY) == 'l')) { // if we cant go down or right anymore
 				preferredDir = 0; // change preferred direction to up
-				currentY--; //
-				currentX--; // go up left (bounce back)
+				currentY = currentY-2; //
+				currentX = currentX-2; // go up left (bounce back)
 				//cout << endl << "Bounced!" << endl;
 			} else {
 				currentY++;
@@ -193,8 +195,8 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 			if ((Bounce(gridLength, gridHeight, tmpX, tmpY) == 'u')
 					|| (Bounce(gridLength, gridHeight, tmpX, tmpY) == 'r')) { // if we cant go down or left anymore
 				preferredDir = 0; // change preferred direction to up
-				currentY--; //
-				currentX++; // go up right (bounce back)
+				currentY = currentY-2; //
+				currentX = currentX+2; // go up right (bounce back)
 				//cout << endl << "Bounced!" << endl;
 			} else {
 				currentY++;
@@ -214,7 +216,7 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 				currentX++; // go right a place (always going right now)
 				//cout << endl << "Bounced!" << endl;
 			} else {
-				currentY++;
+				currentX--;
 			}
 		} else if (possibleAngle == 1) { // downleft
 			tmpX--;
@@ -234,7 +236,7 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 			tmpY--;
 			if ((Bounce(gridLength, gridHeight, tmpX, tmpY) == 'd')
 					|| (Bounce(gridLength, gridHeight, tmpX, tmpY) == 'r')) { // if we cant go up or left anymore
-				preferredDir = 2; // change preferred direction to down
+				preferredDir = 1; // change preferred direction to right
 				currentY++; //
 				currentX++; // go down right (bounce back)
 				//cout << endl << "Bounced!" << endl;
@@ -298,6 +300,11 @@ bool Mathematics::FinaliseProbability(float unfinalisedProbability) {
 	} else {
 		return false;
 	}
+}
+
+int Mathematics::getRandomNumber(int min, int max){
+	int randNum = rand()%(max-min + 1) + min;
+	return randNum;
 }
 
 pair<cell, bool> Mathematics::cellExists(cell checkCell,
