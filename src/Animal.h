@@ -38,6 +38,8 @@ public:
 };
 
 class Ladybug: public Animal {
+protected:
+	int preferredDir;
 public:
 	Ladybug();
 	Ladybug(int posX, int posY);
@@ -45,6 +47,8 @@ public:
 			Ladybug thisLad);
 	void Kill();
 	void Interact();
+	void setPreferredDir(int newPref);
+	int getPreferredDir();
 
 };
 

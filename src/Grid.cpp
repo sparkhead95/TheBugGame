@@ -27,7 +27,6 @@ void Grid::create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector) {
 	vector<vector<string> > board(this->height,
 			vector<string>(this->length, "| -:- |"));
 	Mathematics m;
-
 	for (vector<Aphid>::iterator aphIt = aphidVector.begin();
 			aphIt != aphidVector.end(); ++aphIt) {
 

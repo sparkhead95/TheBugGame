@@ -22,8 +22,11 @@ public:
 	bool Boundary(int gridLength, int gridHeight, int xCoord, int yCoord);
 	bool FinaliseProbability(float unfinalisedProbability);
 	pair<cell, bool> cellExists(cell checkCell, vector<cell> existingCells);
-	pair<int, int> LadyDirection(int xCoord, int yCoord, int gridLength,
-			int gridHeight);
+	pair<int, int> LadyDirection(int currentX, int currentY, int gridLength,
+			int gridHeight, int preferredDir);
+	char Bounce(int gridLength, int gridHeight, int xCoord,
+			int yCoord);
+
 };
 
 } /* namespace std */
