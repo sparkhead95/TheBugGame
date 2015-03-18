@@ -84,7 +84,7 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 	if (preferredDir == 0) { // going up
 		if (possibleAngle == 0) { // definitely up
 			tmpY--;
-			if (Bounce(gridLength, gridHeight, tmpX, tmpY) == "d") { // if we cant go up anymore
+			if (Bounce(gridLength, gridHeight, tmpX, tmpY) == 'd') { // if we cant go up anymore
 				preferredDir = 2; // change preferred direction to down
 				currentY++; // go down a place (always going down now)
 			} else {
@@ -93,11 +93,12 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 		} else if (possibleAngle == 1) { // upright
 			tmpX++;
 			tmpY--;
-			if ((Bounce(gridLength, gridHeight, tmpX, tmpY) == "d")
-					|| (Bounce(gridLength, gridHeight, tmpX, tmpY) == "l")) { // if we cant go up or right anymore
+			if ((Bounce(gridLength, gridHeight, tmpX, tmpY) == 'd')
+					|| (Bounce(gridLength, gridHeight, tmpX, tmpY) == 'l')) { // if we cant go up or right anymore
 				preferredDir = 2; // change preferred direction to down
 				currentY++; //
 				currentX--; // go down left (bounce back)
+				cout << endl << "Bounced!" << endl;
 			} else {
 				currentY--;
 				currentX++; // else go upright
@@ -105,11 +106,12 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 		} else if (possibleAngle == 2) { //upleft
 			tmpX--;
 			tmpY--;
-			if ((Bounce(gridLength, gridHeight, tmpX, tmpY) == "d")
-					|| (Bounce(gridLength, gridHeight, tmpX, tmpY) == "r")) { // if we cant go up or left anymore
+			if ((Bounce(gridLength, gridHeight, tmpX, tmpY) == 'd')
+					|| (Bounce(gridLength, gridHeight, tmpX, tmpY) == 'r')) { // if we cant go up or left anymore
 				preferredDir = 2; // change preferred direction to down
 				currentY++; //
 				currentX++; // go down right (bounce back)
+				cout << endl << "Bounced!" << endl;
 			} else {
 				currentY--;
 				currentX--; // else go upleft
@@ -122,58 +124,123 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 	} else if (preferredDir == 1) { // going right
 		if (possibleAngle == 0) { // definitely right
 			tmpX++;
-			if (Bounce(gridLength, gridHeight, tmpX, tmpY) == "l") { // if we cant go right anymore
+			if (Bounce(gridLength, gridHeight, tmpX, tmpY) == 'l') { // if we cant go right anymore
 				preferredDir = 3; // change preferred direction to left
 				currentX++; // go left a place (always going left now)
+				cout << endl << "Bounced!" << endl;
 			} else {
 				currentY++;
 			}
 		} else if (possibleAngle == 1) { // upright
 			tmpX++;
 			tmpY--;
-			if ((Bounce(gridLength, gridHeight, tmpX, tmpY) == "d")
-					|| (Bounce(gridLength, gridHeight, tmpX, tmpY) == "l")) { // if we cant go up or right anymore
+			if ((Bounce(gridLength, gridHeight, tmpX, tmpY) == 'd')
+					|| (Bounce(gridLength, gridHeight, tmpX, tmpY) == 'l')) { // if we cant go up or right anymore
 				preferredDir = 2; // change preferred direction to down
 				currentY++; //
 				currentX--; // go down left (bounce back)
+				cout << endl << "Bounced!" << endl;
 			} else {
 				currentY--;
 				currentX++; // else go upright
 			}
+		} else if (possibleAngle == 2) { //downright
+			tmpX++;
+			tmpY++;
+			if ((Bounce(gridLength, gridHeight, tmpX, tmpY) == 'u')
+					|| (Bounce(gridLength, gridHeight, tmpX, tmpY) == 'l')) { // if we cant go down or right anymore
+				preferredDir = 0; // change preferred direction to up
+				currentY--; //
+				currentX--; // go up left (bounce back)
+				cout << endl << "Bounced!" << endl;
+			} else {
+				currentY++;
+				currentX++; // else down right
+			}
+		} else {
+			cout << endl
+					<< "Problem with the angle random number generator inside the ladybug inside going right"
+					<< endl;
+		}
+	} else if (preferredDir == 2) { // going down
+		if (possibleAngle == 0) { // definitely down
+			tmpY++;
+			if (Bounce(gridLength, gridHeight, tmpX, tmpY) == 'u') { // if we cant go down anymore
+				preferredDir = 0; // change preferred direction to up
+				currentY--; // go up a place (always going up now)
+				cout << endl << "Bounced!" << endl;
+			} else {
+				currentY++; // else go down
+			}
+		} else if (possibleAngle == 1) { // downright
+			tmpX++;
+			tmpY++;
+			if ((Bounce(gridLength, gridHeight, tmpX, tmpY) == 'u')
+					|| (Bounce(gridLength, gridHeight, tmpX, tmpY) == 'l')) { // if we cant go down or right anymore
+				preferredDir = 0; // change preferred direction to up
+				currentY--; //
+				currentX--; // go up left (bounce back)
+				cout << endl << "Bounced!" << endl;
+			} else {
+				currentY++;
+				currentX++; // else down upright
+			}
+		} else if (possibleAngle == 2) { //downleft
+			tmpX--;
+			tmpY++;
+			if ((Bounce(gridLength, gridHeight, tmpX, tmpY) == 'u')
+					|| (Bounce(gridLength, gridHeight, tmpX, tmpY) == 'r')) { // if we cant go down or left anymore
+				preferredDir = 0; // change preferred direction to up
+				currentY--; //
+				currentX++; // go up right (bounce back)
+				cout << endl << "Bounced!" << endl;
+			} else {
+				currentY++;
+				currentX--; // else down left
+			}
+
+		} else {
+			cout << endl
+					<< "Problem with the angle random number generator inside the ladybug inside going down"
+					<< endl;
+		}
+	} else if (preferredDir == 3) { // going left
+		if (possibleAngle == 0) { // definitely left
+			tmpX--;
+			if (Bounce(gridLength, gridHeight, tmpX, tmpY) == 'r') { // if we cant go left anymore
+				preferredDir = 1; // change preferred direction to right
+				currentX++; // go right a place (always going right now)
+			} else {
+				currentY++;
+			}
+		} else if (possibleAngle == 1) { // downleft
+			tmpX--;
+			tmpY++;
+			if ((Bounce(gridLength, gridHeight, tmpX, tmpY) == 'u')
+					|| (Bounce(gridLength, gridHeight, tmpX, tmpY) == 'r')) { // if we cant go down or left anymore
+				preferredDir = 1; // change preferred direction to right
+				currentY--; //
+				currentX++; // go up right (bounce back)
+			} else {
+				currentY++;
+				currentX--; // else down left
+			}
 		} else if (possibleAngle == 2) { //upleft
 			tmpX--;
 			tmpY--;
-			if ((Bounce(gridLength, gridHeight, tmpX, tmpY) == "d")
-					|| (Bounce(gridLength, gridHeight, tmpX, tmpY) == "r")) { // if we cant go up or left anymore
+			if ((Bounce(gridLength, gridHeight, tmpX, tmpY) == 'd')
+					|| (Bounce(gridLength, gridHeight, tmpX, tmpY) == 'r')) { // if we cant go up or left anymore
 				preferredDir = 2; // change preferred direction to down
 				currentY++; //
 				currentX++; // go down right (bounce back)
 			} else {
 				currentY--;
-				currentX--; // else go upleft
+				currentX--; // else up left
 			}
 		} else {
 			cout << endl
-					<< "Problem with the angle random number generator inside the ladybug inside going up"
+					<< "Problem with the angle random number generator inside the ladybug inside going left"
 					<< endl;
-		}
-	} else if (preferredDir == 2) { // going down
-		if (possibleAngle == 0) { // definitely up
-			if (Bounce(gridLength, gridHeight, currentX, currentY) == "d") { // if we cant go up anymore
-				preferredDir = 2; // change preferred direction
-				currentY++; // go down a place (always going down now)
-			} else {
-				currentY--;
-			}
-		}
-	} else if (preferredDir == 3) { // going left
-		if (possibleAngle == 0) { // definitely up
-			if (Bounce(gridLength, gridHeight, currentX, currentY) == "d") { // if we cant go up anymore
-				preferredDir = 2; // change preferred direction
-				currentY++; // go down a place (always going down now)
-			} else {
-				currentY--;
-			}
 		}
 	} else {
 		cout << endl
@@ -199,18 +266,18 @@ bool Mathematics::Boundary(int gridLength, int gridHeight, int xCoord,
 
 char Mathematics::Bounce(int gridLength, int gridHeight, int xCoord,
 		int yCoord) {
-	char dir = "";
+	char dir = 'N';
 	if (yCoord >= gridHeight) {
-		dir = "u";
+		dir = 'u';
 	}
 	if (yCoord <= 0) {
-		dir = "d";
+		dir = 'd';
 	}
 	if (xCoord >= gridLength) {
-		dir = "l";
+		dir = 'l';
 	}
 	if (xCoord <= 0) {
-		dir = "r";
+		dir = 'r';
 	}
 	return dir;
 }
