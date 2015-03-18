@@ -136,6 +136,7 @@ void Manager::runGame(vector<Aphid> aphidVector, vector<Ladybug> ladyVector,
 				aphIt != aphidVector.end(); ++aphIt) {
 			if (myMath.FinaliseProbability(initialConfig.getAphidMoveConf())) {
 				(*aphIt).Move(initialConfig, gridLength, gridHeight, (*aphIt));
+				//cout<<endl<<"aphid moved to "<<(*aphIt).getPosition().first<<" "<<(*aphIt).getPosition().second<<endl;
 			} else {
 			}
 		}
@@ -143,6 +144,7 @@ void Manager::runGame(vector<Aphid> aphidVector, vector<Ladybug> ladyVector,
 				ladIt != ladyVector.end(); ++ladIt) {
 			if (myMath.FinaliseProbability(initialConfig.getLadyMoveConf())) {
 				(*ladIt).Move(initialConfig, gridLength, gridHeight, (*ladIt));
+				//cout<<endl<<"ladybug moved to "<<(*ladIt).getPosition().first<<" "<<(*ladIt).getPosition().second<<endl;
 			} else {
 			}
 		}

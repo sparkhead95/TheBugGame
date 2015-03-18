@@ -34,6 +34,8 @@ public:
 	void RemoveLadybug(Ladybug thisLadybug);
 	int getX();
 	int getY();
+	int getAphidsSize();
+	int getLadysSize();
 };
 
 #endif /* CELL_H_ */

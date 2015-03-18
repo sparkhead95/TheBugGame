@@ -17,12 +17,16 @@ Ladybug::Ladybug() {
 Ladybug::Ladybug(int posX, int posY) {
 	xCoord = posX;
 	yCoord = posY;
+	srand(time(NULL));
 	preferredDir = rand() % (4);
+	srand(1);
 }
 
-void Ladybug::Move(Configuration thisConf, int gridLength, int gridHeight, Ladybug thisLad) {
+void Ladybug::Move(Configuration thisConf, int gridLength, int gridHeight,
+		Ladybug thisLad) {
 	Mathematics m;
-	pair<int, int> new_pos = m.LadyDirection(this->xCoord, this->yCoord, gridLength, gridHeight, preferredDir);
+	pair<int, int> new_pos = m.LadyDirection(this->xCoord, this->yCoord,
+			gridLength, gridHeight, preferredDir);
 	cell movingTo(new_pos.first, new_pos.second);
 	movingTo.InsertLadybug(thisLad);
 	thisLad.setPreferredDir(m.GetNewPreferredDirection());
@@ -32,10 +36,10 @@ void Ladybug::Move(Configuration thisConf, int gridLength, int gridHeight, Ladyb
 	this->yCoord = new_pos.second;
 }
 
-void Ladybug::setPreferredDir(int newPref){
+void Ladybug::setPreferredDir(int newPref) {
 	this->preferredDir = newPref;
 }
 
-int Ladybug::getPreferredDir(){
+int Ladybug::getPreferredDir() {
 	return this->preferredDir;
 }

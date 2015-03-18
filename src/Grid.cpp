@@ -83,7 +83,12 @@ void Grid::create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector) {
 		}
 		cout << endl;
 	};
+	for (vector<cell>::iterator cellIt = existingCells.begin();
+				cellIt != existingCells.end(); ++cellIt) {
+		cout<<endl<<(*cellIt).GetCellContents()<<" at "<<(*cellIt).getX()<<" "<<(*cellIt).getY();
+	}
 	cout << endl;
+
 }
 
 int Grid::getHeight() {

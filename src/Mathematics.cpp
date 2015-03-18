@@ -78,7 +78,9 @@ pair<int, int> Mathematics::AphidDirection(int xCoord, int yCoord,
 pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 		int gridLength, int gridHeight, int preferredDir) {
 	pair<int, int> newPosition;
+	srand(time(NULL));
 	int possibleAngle = rand() % (2), tmpX, tmpY;
+	srand(1);
 	tmpX = currentX;
 	tmpY = currentY;
 	if (preferredDir == 0) { // going up
@@ -98,7 +100,7 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 				preferredDir = 2; // change preferred direction to down
 				currentY++; //
 				currentX--; // go down left (bounce back)
-				cout << endl << "Bounced!" << endl;
+				//cout << endl << "Bounced!" << endl;
 			} else {
 				currentY--;
 				currentX++; // else go upright
@@ -111,7 +113,7 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 				preferredDir = 2; // change preferred direction to down
 				currentY++; //
 				currentX++; // go down right (bounce back)
-				cout << endl << "Bounced!" << endl;
+				//cout << endl << "Bounced!" << endl;
 			} else {
 				currentY--;
 				currentX--; // else go upleft
@@ -127,7 +129,7 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 			if (Bounce(gridLength, gridHeight, tmpX, tmpY) == 'l') { // if we cant go right anymore
 				preferredDir = 3; // change preferred direction to left
 				currentX++; // go left a place (always going left now)
-				cout << endl << "Bounced!" << endl;
+				//cout << endl << "Bounced!" << endl;
 			} else {
 				currentY++;
 			}
@@ -139,7 +141,7 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 				preferredDir = 2; // change preferred direction to down
 				currentY++; //
 				currentX--; // go down left (bounce back)
-				cout << endl << "Bounced!" << endl;
+				//cout << endl << "Bounced!" << endl;
 			} else {
 				currentY--;
 				currentX++; // else go upright
@@ -152,7 +154,7 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 				preferredDir = 0; // change preferred direction to up
 				currentY--; //
 				currentX--; // go up left (bounce back)
-				cout << endl << "Bounced!" << endl;
+				//cout << endl << "Bounced!" << endl;
 			} else {
 				currentY++;
 				currentX++; // else down right
@@ -168,7 +170,7 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 			if (Bounce(gridLength, gridHeight, tmpX, tmpY) == 'u') { // if we cant go down anymore
 				preferredDir = 0; // change preferred direction to up
 				currentY--; // go up a place (always going up now)
-				cout << endl << "Bounced!" << endl;
+				//cout << endl << "Bounced!" << endl;
 			} else {
 				currentY++; // else go down
 			}
@@ -180,7 +182,7 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 				preferredDir = 0; // change preferred direction to up
 				currentY--; //
 				currentX--; // go up left (bounce back)
-				cout << endl << "Bounced!" << endl;
+				//cout << endl << "Bounced!" << endl;
 			} else {
 				currentY++;
 				currentX++; // else down upright
@@ -193,7 +195,7 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 				preferredDir = 0; // change preferred direction to up
 				currentY--; //
 				currentX++; // go up right (bounce back)
-				cout << endl << "Bounced!" << endl;
+				//cout << endl << "Bounced!" << endl;
 			} else {
 				currentY++;
 				currentX--; // else down left
@@ -210,7 +212,7 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 			if (Bounce(gridLength, gridHeight, tmpX, tmpY) == 'r') { // if we cant go left anymore
 				preferredDir = 1; // change preferred direction to right
 				currentX++; // go right a place (always going right now)
-				cout << endl << "Bounced!" << endl;
+				//cout << endl << "Bounced!" << endl;
 			} else {
 				currentY++;
 			}
@@ -222,7 +224,7 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 				preferredDir = 1; // change preferred direction to right
 				currentY--; //
 				currentX++; // go up right (bounce back)
-				cout << endl << "Bounced!" << endl;
+				//cout << endl << "Bounced!" << endl;
 			} else {
 				currentY++;
 				currentX--; // else down left
@@ -235,7 +237,7 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 				preferredDir = 2; // change preferred direction to down
 				currentY++; //
 				currentX++; // go down right (bounce back)
-				cout << endl << "Bounced!" << endl;
+				//cout << endl << "Bounced!" << endl;
 			} else {
 				currentY--;
 				currentX--; // else up left
