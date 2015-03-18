@@ -79,9 +79,9 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 		int gridLength, int gridHeight, int preferredDir) {
 	pair<int, int> newPosition;
 	srand(time(NULL));
-	int possibleAngle = getRandomNumber(0,2), tmpX, tmpY;
-	cout<<endl<<"Possible angle = "<<possibleAngle<<endl;
-	cout<<endl<<"Preferred direction = "<<preferredDir<<endl;
+	int possibleAngle = getRandomNumber(0, 2), tmpX, tmpY;
+	//cout<<endl<<"Possible angle = "<<possibleAngle<<endl;
+	//cout<<endl<<"Preferred direction = "<<preferredDir<<endl;
 	//srand(1);
 	tmpX = currentX;
 	tmpY = currentY;
@@ -125,7 +125,7 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 					<< "Problem with the angle random number generator inside the ladybug inside going up"
 					<< endl;
 		}
-	} else if (preferredDir == 1) { // going right
+	} else if (preferredDir == 1) { // going right<
 		if (possibleAngle == 0) { // definitely right
 			tmpX++;
 			if (Bounce(gridLength, gridHeight, tmpX, tmpY) == 'l') { // if we cant go right anymore
@@ -182,8 +182,8 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 			if ((Bounce(gridLength, gridHeight, tmpX, tmpY) == 'u')
 					|| (Bounce(gridLength, gridHeight, tmpX, tmpY) == 'l')) { // if we cant go down or right anymore
 				preferredDir = 0; // change preferred direction to up
-				currentY = currentY-2; //
-				currentX = currentX-2; // go up left (bounce back)
+				currentY = currentY - 2; //
+				currentX = currentX - 2; // go up left (bounce back)
 				//cout << endl << "Bounced!" << endl;
 			} else {
 				currentY++;
@@ -195,8 +195,8 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 			if ((Bounce(gridLength, gridHeight, tmpX, tmpY) == 'u')
 					|| (Bounce(gridLength, gridHeight, tmpX, tmpY) == 'r')) { // if we cant go down or left anymore
 				preferredDir = 0; // change preferred direction to up
-				currentY = currentY-2; //
-				currentX = currentX+2; // go up right (bounce back)
+				currentY = currentY - 2; //
+				currentX = currentX + 2; // go up right (bounce back)
 				//cout << endl << "Bounced!" << endl;
 			} else {
 				currentY++;
@@ -255,8 +255,18 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 				<< endl;
 	}
 	this->preferredDirection = preferredDir;
-	newPosition.first = currentX;
-	newPosition.second = currentY;
+	if ((currentX >= 0) && (currentX < gridLength)) {
+		newPosition.first = currentX;
+
+	} else {
+		cout << endl << "X is oob" << endl;
+	}
+	if ((currentY >= 0) && (currentX < gridHeight)) {
+		newPosition.second = currentY;
+	} else {
+		cout << endl << "Y is oob" << endl;
+	}
+
 	return newPosition;
 }
 
@@ -278,16 +288,16 @@ bool Mathematics::Boundary(int gridLength, int gridHeight, int xCoord,
 char Mathematics::Bounce(int gridLength, int gridHeight, int xCoord,
 		int yCoord) {
 	char dir = 'N';
-	if (yCoord >= gridHeight) {
+	if (yCoord > gridHeight) {
 		dir = 'u';
 	}
-	if (yCoord <= 0) {
+	if (yCoord < 0) {
 		dir = 'd';
 	}
-	if (xCoord >= gridLength) {
+	if (xCoord > gridLength) {
 		dir = 'l';
 	}
-	if (xCoord <= 0) {
+	if (xCoord < 0) {
 		dir = 'r';
 	}
 	return dir;
@@ -302,8 +312,8 @@ bool Mathematics::FinaliseProbability(float unfinalisedProbability) {
 	}
 }
 
-int Mathematics::getRandomNumber(int min, int max){
-	int randNum = rand()%(max-min + 1) + min;
+int Mathematics::getRandomNumber(int min, int max) {
+	int randNum = rand() % (max - min + 1) + min;
 	return randNum;
 }
 
@@ -317,11 +327,15 @@ pair<cell, bool> Mathematics::cellExists(cell checkCell,
 				&& (checkCell.getY() == (*cellIt).getY())) {
 			exists = true;
 			existingCell = (*cellIt);
-			return make_pair(existingCell, true);
+
 		}
 	}
 	if (exists == false) {
 		return make_pair(existingCell, false);
+		cout << endl << "false" << endl;
+	} else {
+		return make_pair(existingCell, true);
+		cout << endl << "true" << endl;
 	}
 }
 

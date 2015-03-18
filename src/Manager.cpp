@@ -79,7 +79,7 @@ void Manager::runPreReqs() {
 		ladyVector[j].setLength(tempX);
 	}
 
-	// now that we have all of the locations for the animals, draw the grid.
+	// now that we have all of the locations for the animals, draw the grid with the base coords for the animals..
 	initialGrid.create(aphidVector, ladyVector);
 
 	ifstream aphidConfig;
@@ -140,6 +140,7 @@ void Manager::runGame(vector<Aphid> aphidVector, vector<Ladybug> ladyVector,
 			} else {
 			}
 		}
+		//cout<<endl<<"Aphids moved."<<endl;
 		for (vector<Ladybug>::iterator ladIt = ladyVector.begin();
 				ladIt != ladyVector.end(); ++ladIt) {
 			if (myMath.FinaliseProbability(initialConfig.getLadyMoveConf())) {
@@ -150,8 +151,10 @@ void Manager::runGame(vector<Aphid> aphidVector, vector<Ladybug> ladyVector,
 			} else {
 			}
 		}
+		//cout<<endl<<"Ladybugs moved."<<endl;
 		Grid newGrid;
 		newGrid.create(aphidVector, ladyVector);
+		//cout<<endl<<"Grid created and written."<<endl;
 		this_thread::sleep_for(chrono::milliseconds(500));
 		//cin >> end;
 	}
