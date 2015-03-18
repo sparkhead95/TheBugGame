@@ -91,3 +91,20 @@ void cell::RemoveAphid(Aphid thisAphid) {
 void cell::RemoveLadybug(Ladybug thisLadybug) {
 	//cellLadys.erase(cellLadys.begin(),cellLadys.end(),thisLadybug);
 }
+
+int cell::getAphidsSize() {
+	unsigned int counter = 0;
+	for (vector<Aphid>::iterator aphIt = cellAphids.begin();
+			aphIt != cellAphids.end(); ++aphIt) {
+		counter++;
+	}
+	return counter;
+}
+int cell::getLadysSize() {
+	unsigned int counter = 0;
+	for (vector<Ladybug>::iterator ladIt = cellLadys.begin();
+			ladIt != cellLadys.end(); ++ladIt) {
+		counter++;
+	}
+	return counter;
+}

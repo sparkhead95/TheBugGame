@@ -86,6 +86,7 @@ void Grid::create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector) {
 	for (vector<cell>::iterator cellIt = existingCells.begin();
 				cellIt != existingCells.end(); ++cellIt) {
 		cout<<endl<<(*cellIt).GetCellContents()<<" at "<<(*cellIt).getX()<<" "<<(*cellIt).getY();
+		cout<<endl<<(*cellIt).getAphidsSize()<<" aphids and "<<(*cellIt).getLadysSize()<< "ladybugs at "<<(*cellIt).getX()<<" "<<(*cellIt).getY();
 	}
 	cout << endl;
 
