@@ -210,6 +210,7 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 			if (Bounce(gridLength, gridHeight, tmpX, tmpY) == 'r') { // if we cant go left anymore
 				preferredDir = 1; // change preferred direction to right
 				currentX++; // go right a place (always going right now)
+				cout<<endl<<"Bounced!"<<endl;
 			} else {
 				currentY++;
 			}
@@ -221,6 +222,7 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 				preferredDir = 1; // change preferred direction to right
 				currentY--; //
 				currentX++; // go up right (bounce back)
+				cout<<endl<<"Bounced!"<<endl;
 			} else {
 				currentY++;
 				currentX--; // else down left
@@ -233,6 +235,7 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 				preferredDir = 2; // change preferred direction to down
 				currentY++; //
 				currentX++; // go down right (bounce back)
+				cout<<endl<<"Bounced!"<<endl;
 			} else {
 				currentY--;
 				currentX--; // else up left
@@ -247,10 +250,13 @@ pair<int, int> Mathematics::LadyDirection(int currentX, int currentY,
 				<< "Problem with the preferred direction random value- is not below 4 or is not being compared"
 				<< endl;
 	}
-
 	newPosition.first = currentX;
 	newPosition.second = currentY;
 	return newPosition;
+}
+
+string Mathematics::GetNewPreferredDirection(){
+
 }
 
 bool Mathematics::Boundary(int gridLength, int gridHeight, int xCoord,
