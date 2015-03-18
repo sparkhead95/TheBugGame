@@ -25,6 +25,7 @@ void Ladybug::Move(Configuration thisConf, int gridLength, int gridHeight, Ladyb
 	pair<int, int> new_pos = m.LadyDirection(this->xCoord, this->yCoord, gridLength, gridHeight, preferredDir);
 	cell movingTo(new_pos.first, new_pos.second);
 	movingTo.InsertLadybug(thisLad);
+	thisLad.setPreferredDir(m.GetNewPreferredDirection());
 	cell currentCell(this->xCoord, this->yCoord);
 	currentCell.RemoveLadybug(thisLad);
 	this->xCoord = new_pos.first;

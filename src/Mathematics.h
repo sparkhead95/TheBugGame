@@ -14,6 +14,8 @@
 namespace std {
 
 class Mathematics {
+protected:
+	int preferredDirection;
 public:
 	Mathematics();
 	virtual ~Mathematics();
@@ -26,7 +28,7 @@ public:
 			int gridHeight, int preferredDir);
 	char Bounce(int gridLength, int gridHeight, int xCoord,
 			int yCoord);
-
+	int GetNewPreferredDirection();
 };
 
 } /* namespace std */
