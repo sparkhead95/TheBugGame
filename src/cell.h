@@ -38,6 +38,7 @@ public:
 	int getLadysSize();
 	bool checkAphidsReproduce();
 	bool checkLadyssReproduce();
+	void cell::Fight();
 };
 
 #endif /* CELL_H_ */

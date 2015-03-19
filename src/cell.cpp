@@ -125,3 +125,7 @@ int cell::getLadysSize() {
 	}
 	return counter;
 }
+
+void cell::Fight(){
+
+}
