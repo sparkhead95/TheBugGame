@@ -136,12 +136,18 @@ void Manager::runGame(vector<Aphid> aphidVector, vector<Ladybug> ladyVector,
 		if (allCells.size() > 0) {
 			for (vector<cell>::iterator cellIt = allCells.begin();
 					cellIt != allCells.end(); ++cellIt) {
-				if (myMath.AphidsMate(
-						initialConfig.getAphidReproConf())) {
+				if (myMath.Mate(initialConfig.getAphidReproConf())) {
 					if ((*cellIt).checkAphidsReproduce()) {
 						Aphid baby;
 						(*cellIt).InsertAphid(baby);
 						aphidVector.push_back(baby);
+					}
+				}
+				if (myMath.Mate(initialConfig.getLadyReproConf())) {
+					if ((*cellIt).checkLadyssReproduce()) {
+						Ladybug baby;
+						(*cellIt).InsertLadybug(baby);
+						ladyVector.push_back(baby);
 					}
 				}
 			}

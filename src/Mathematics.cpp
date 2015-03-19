@@ -24,7 +24,7 @@ Mathematics::~Mathematics() {
 	// TODO Auto-generated destructor stub
 }
 
-bool Mathematics::AphidsMate(float possibility){
+bool Mathematics::Mate(float possibility){
 	double fMin = 0, fMax = 1;
 	float f = (float)rand() / RAND_MAX;
 	float chance = fMin + f * (fMax - fMin);

@@ -27,7 +27,6 @@ bool cell::checkAphidsReproduce() {
 		return false;
 	} else {
 		return true;
-		cout << "should be shagging..." << endl;
 	}
 }
 
