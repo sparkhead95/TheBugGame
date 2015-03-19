@@ -25,7 +25,10 @@ Mathematics::~Mathematics() {
 }
 
 bool Mathematics::AphidsMate(float possibility){
-	float chance = (rand() / (RAND_MAX));
+	double fMin = 0, fMax = 1;
+	float f = (float)rand() / RAND_MAX;
+	float chance = fMin + f * (fMax - fMin);
+	//cout<<chance<<endl;
 	if (chance <= possibility) {
 		return true;
 	} else {
