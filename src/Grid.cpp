@@ -38,7 +38,7 @@ void Grid::create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector) {
 		if (m.cellExists(tempCell, existingCells).second == true) {
 			cell existingCell = m.cellExists(tempCell, existingCells).first;
 			existingCell.InsertAphid(*aphIt);
-			existingCells.push_back(existingCell);
+			//existingCells.push_back(existingCell);
 			vector<string> & row = column.at(temp_pos.second);
 			row.at(temp_pos.first) = existingCell.GetCellContents();
 			//cout << "inserted an aphid at " << temp_pos.first << "," << temp_pos.second << endl;

@@ -132,6 +132,7 @@ void Manager::runGame(vector<Aphid> aphidVector, vector<Ladybug> ladyVector,
 		Configuration initialConfig, int gridLength, int gridHeight) {
 	Grid newGrid;
 	while (true) {
+		// ============== COMMENT THIS SECTION OUT IF YOU WANT THE PROGRAM TO WORK ======================
 		vector<cell> allCells = newGrid.getExistingCells();
 		if (allCells.size() > 0) {
 			for (vector<cell>::iterator cellIt = allCells.begin();
@@ -153,7 +154,7 @@ void Manager::runGame(vector<Aphid> aphidVector, vector<Ladybug> ladyVector,
 				}
 			}
 		}
-
+		// ===================================================================================
 		for (vector<Aphid>::iterator aphIt = aphidVector.begin();
 				aphIt != aphidVector.end(); ++aphIt) {
 			if (myMath.FinaliseProbability(initialConfig.getAphidMoveConf())) {
