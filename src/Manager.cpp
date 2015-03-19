@@ -136,6 +136,7 @@ void Manager::runGame(vector<Aphid> aphidVector, vector<Ladybug> ladyVector,
 		if (allCells.size() > 0) {
 			for (vector<cell>::iterator cellIt = allCells.begin();
 					cellIt != allCells.end(); ++cellIt) {
+				(*cellIt).Fight(initialConfig.getAphidKillConf(), initialConfig.getLadyKillConf());
 				if (myMath.Mate(initialConfig.getAphidReproConf())) {
 					if ((*cellIt).checkAphidsReproduce()) {
 						Aphid baby;

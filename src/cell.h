@@ -38,7 +38,7 @@ public:
 	int getLadysSize();
 	bool checkAphidsReproduce();
 	bool checkLadyssReproduce();
-	void cell::Fight();
+	void Fight(float aphidKillConf, float ladyKillConf);
 };
 
 #endif /* CELL_H_ */

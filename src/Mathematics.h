@@ -31,6 +31,7 @@ public:
 	int GetNewPreferredDirection();
 	int getRandomNumber(int min, int max);
 	bool Mate(float possibility);
+	char Fight(float AphidConfig, float LadybugConfig);
 };
 
 } /* namespace std */

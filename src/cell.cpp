@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sstream>
+#include "Mathematics.h"
 
 using namespace std;
 //                                Cell.
@@ -126,6 +127,14 @@ int cell::getLadysSize() {
 	return counter;
 }
 
-void cell::Fight(){
+void cell::Fight(float aphidKillConf, float ladyKillConf) {
+	Mathematics m;
+	char result = m.Fight(aphidKillConf, ladyKillConf);
+	if (result == 'N') {
 
+	} else if (result == 'L') {
+		this->cellAphids.erase(cellAphids.begin() + 1);
+	} else if (result == 'A') {
+		this->cellLadys.erase(cellLadys.begin() + 1);
+	}
 }

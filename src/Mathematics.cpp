@@ -24,9 +24,9 @@ Mathematics::~Mathematics() {
 	// TODO Auto-generated destructor stub
 }
 
-bool Mathematics::Mate(float possibility){
+bool Mathematics::Mate(float possibility) {
 	double fMin = 0, fMax = 1;
-	float f = (float)rand() / RAND_MAX;
+	float f = (float) rand() / RAND_MAX;
 	float chance = fMin + f * (fMax - fMin);
 	//cout<<chance<<endl;
 	if (chance <= possibility) {
@@ -36,6 +36,33 @@ bool Mathematics::Mate(float possibility){
 	}
 }
 
+char Mathematics::Fight(float AphidConfig, float LadybugConfig) {
+	char result = 'N';
+	double fMin = 0, fMax = 1;
+	bool aphidWins = false, ladybugWins = false;
+	float f = (float) rand() / RAND_MAX;
+	float chance = fMin + f * (fMax - fMin);
+	if (chance >= (AphidConfig + LadybugConfig)) {
+
+		// no one wins
+	} else if (chance >= (1 - LadybugConfig)) {
+		result = 'L';
+		ladybugWins = true;
+		//ladybug wins
+	} else if (chance >= (1 - AphidConfig)) {
+		result = 'A';
+		aphidWins = true;
+		//aphid wins
+	} else {
+		result = 'L';
+		ladybugWins = true;
+	}
+	if ((ladybugWins) && (aphidWins)){
+		result = 'L';
+		aphidWins = false;
+	}
+	return result;
+}
 
 pair<int, int> Mathematics::AphidDirection(int xCoord, int yCoord,
 		int gridLength, int gridHeight) {
