@@ -21,6 +21,24 @@ cell::cell(int posX, int posY) {
 	this->yCoord = posY;
 }
 
+bool cell::checkAphidsReproduce(){
+	if( this->cellAphids.size() % 2== 0 ){
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+
+bool cell::checkLadyssReproduce(){
+	if( this->cellLadys.size() % 2== 0 ){
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+
 int cell::getX() {
 	return (this->xCoord);
 }

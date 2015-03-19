@@ -17,6 +17,7 @@
 #include <chrono>
 #include <thread>
 #include <stdlib.h>
+#include "Interact.h"
 
 using namespace std;
 Mathematics myMath;
@@ -130,6 +131,8 @@ void Manager::runPreReqs() {
 
 void Manager::runGame(vector<Aphid> aphidVector, vector<Ladybug> ladyVector,
 		Configuration initialConfig, int gridLength, int gridHeight) {
+	Interact interact;
+	interact.reproduce();
 
 	while (true) {
 		for (vector<Aphid>::iterator aphIt = aphidVector.begin();
@@ -144,7 +147,7 @@ void Manager::runGame(vector<Aphid> aphidVector, vector<Ladybug> ladyVector,
 		for (vector<Ladybug>::iterator ladIt = ladyVector.begin();
 				ladIt != ladyVector.end(); ++ladIt) {
 			if (myMath.FinaliseProbability(initialConfig.getLadyMoveConf())) {
-				(*ladIt).setPreferredDir(myMath.getRandomNumber(0,3));
+				(*ladIt).setPreferredDir(myMath.getRandomNumber(0, 3));
 				(*ladIt).Move(initialConfig, gridLength, gridHeight, (*ladIt));
 
 				//cout<<endl<<"ladybug moved to "<<(*ladIt).getPosition().first<<" "<<(*ladIt).getPosition().second<<endl;

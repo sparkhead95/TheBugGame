@@ -20,7 +20,6 @@ class cell {
 protected:
 	vector<Aphid> cellAphids;
 	vector<Ladybug> cellLadys;
-
 	int xCoord, yCoord;
 public:
 	cell();
@@ -36,6 +35,9 @@ public:
 	int getY();
 	int getAphidsSize();
 	int getLadysSize();
+	bool checkAphidsReproduce();
+	bool checkLadyssReproduce();
+
 };
 
 #endif /* CELL_H_ */
