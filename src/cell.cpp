@@ -21,20 +21,27 @@ cell::cell(int posX, int posY) {
 	this->yCoord = posY;
 }
 
-bool cell::checkAphidsReproduce(){
-	if( this->cellAphids.size() % 2== 0 ){
+bool cell::checkAphidsReproduce() {
+	if (this->cellAphids.size() % 2 == 0) {
+		cout << cellAphids.size() << endl;
 		return false;
-	}
-	else{
+	} else {
 		return true;
+		cout << "should be shagging..." << endl;
 	}
 }
 
-bool cell::checkLadyssReproduce(){
-	if( this->cellLadys.size() % 2== 0 ){
+void cell::setExistingCells(vector<cell> existingCs) {
+	this->existingCells = existingCs;
+}
+vector<cell> cell::getExistingCells() {
+	return this->existingCells;
+}
+
+bool cell::checkLadyssReproduce() {
+	if (this->cellLadys.size() % 2 == 0) {
 		return false;
-	}
-	else{
+	} else {
 		return true;
 	}
 }

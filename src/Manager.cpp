@@ -17,7 +17,6 @@
 #include <chrono>
 #include <thread>
 #include <stdlib.h>
-#include "Interact.h"
 
 using namespace std;
 Mathematics myMath;
@@ -131,8 +130,6 @@ void Manager::runPreReqs() {
 
 void Manager::runGame(vector<Aphid> aphidVector, vector<Ladybug> ladyVector,
 		Configuration initialConfig, int gridLength, int gridHeight) {
-	Interact interact;
-	interact.reproduce();
 
 	while (true) {
 		for (vector<Aphid>::iterator aphIt = aphidVector.begin();

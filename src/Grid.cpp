@@ -64,8 +64,6 @@ void Grid::create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector) {
 			//cout << endl << "created existing cell." << endl;
 			existingCell.InsertLadybug(*ladIt);
 			//cout << endl << "inserted ladybug" << endl;
-			existingCells.push_back(existingCell);
-			//cout << endl << "added existing cell to list of existing cells"	<< endl;
 			if (temp_pos.second < this->height) {
 				vector<string> & row = column.at(temp_pos.second);
 				//cout << endl << "row located. assigning cell contents.."<< endl;
@@ -97,8 +95,7 @@ void Grid::create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector) {
 					} catch (const std::out_of_range& oor) {
 						//std::cerr << "Out of Range error: " << oor.what() << '\n';
 					}
-				}
-				else{
+				} else {
 					//cout << endl << "exceeded length."<< endl;
 				}
 			} else {
@@ -111,8 +108,10 @@ void Grid::create(vector<Aphid> aphidVector, vector<Ladybug> ladyVector) {
 					<< endl;
 		}
 	}
-	//cout << endl << "Ladybugs written." << endl;
 
+	//cout << endl << "Ladybugs written." << endl;
+	cout << aphidVector.size() << " Aphids and " << ladyVector.size()
+			<< " ladybugs in total." << endl;
 	for (unsigned int i = 0; i < column.size(); i++) {
 //find the row
 		vector<string> & row = column.at(i);
@@ -137,5 +136,9 @@ int Grid::getHeight() {
 
 int Grid::getLength() {
 	return this->length;
+}
+
+vector<cell> Grid::getExistingCells() {
+	return this->existingCells;
 }
 

@@ -30,11 +30,17 @@ Aphid::Aphid(int posX, int posY) {
 
 void Aphid::Move(Configuration thisConf, int gridLength, int gridHeight, Aphid thisAph) {
 	Mathematics m;
+	/*cell tempCell(this->xCoord, this->yCoord);
+	cell existingCell = m.cellExists(tempCell, existingCells).first;
+	Aphid baby(this->xCoord, this->yCoord);
+	if (existingCell.checkAphidsReproduce()){
+		existingCell.InsertAphid(baby);
+	}*/
 	pair<int, int> new_pos = m.AphidDirection(this->xCoord, this->yCoord, gridLength, gridHeight);
 	cell movingTo(new_pos.first, new_pos.second);
 	movingTo.InsertAphid(thisAph);
-	cell currentCell(this->xCoord, this->yCoord);
-	currentCell.RemoveAphid(thisAph);
+
+	//existingCell.RemoveAphid(thisAph);
 	this->xCoord = new_pos.first;
 	this->yCoord = new_pos.second;
 }

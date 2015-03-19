@@ -8,12 +8,15 @@
 #ifndef INTERACT_H_
 #define INTERACT_H_
 
+#include "Configuration.h"
+#include "Grid.h"
+
 namespace std {
 
 class Interact {
 public:
 	Interact();
-	void reproduce();
+	void reproduce(Configuration thisConfig, Grid thisGrid);
 	virtual ~Interact();
 };
 
