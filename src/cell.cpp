@@ -23,19 +23,12 @@ cell::cell(int posX, int posY) {
 
 bool cell::checkAphidsReproduce() {
 	if (this->cellAphids.size() % 2 == 0) {
-		cout << cellAphids.size() << endl;
+		//cout << cellAphids.size() << endl;
 		return false;
 	} else {
 		return true;
 		cout << "should be shagging..." << endl;
 	}
-}
-
-void cell::setExistingCells(vector<cell> existingCs) {
-	this->existingCells = existingCs;
-}
-vector<cell> cell::getExistingCells() {
-	return this->existingCells;
 }
 
 bool cell::checkLadyssReproduce() {

@@ -38,8 +38,6 @@ public:
 	int getLadysSize();
 	bool checkAphidsReproduce();
 	bool checkLadyssReproduce();
-	void setExistingCells(vector<cell> existingCs);
-	vector<cell> getExistingCells();
 };
 
 #endif /* CELL_H_ */

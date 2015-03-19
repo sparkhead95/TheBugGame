@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include <cstdlib>
 #include <ctime>
+#include "Configuration.h"
 
 namespace std {
 
@@ -22,6 +23,16 @@ Mathematics::Mathematics() {
 Mathematics::~Mathematics() {
 	// TODO Auto-generated destructor stub
 }
+
+bool Mathematics::AphidsMate(float possibility){
+	float chance = (rand() / (RAND_MAX));
+	if (chance <= possibility) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 
 pair<int, int> Mathematics::AphidDirection(int xCoord, int yCoord,
 		int gridLength, int gridHeight) {

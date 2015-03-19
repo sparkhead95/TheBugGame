@@ -30,6 +30,7 @@ public:
 			int yCoord);
 	int GetNewPreferredDirection();
 	int getRandomNumber(int min, int max);
+	bool AphidsMate(float possibility);
 };
 
 } /* namespace std */

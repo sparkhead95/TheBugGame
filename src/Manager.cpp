@@ -130,8 +130,23 @@ void Manager::runPreReqs() {
 
 void Manager::runGame(vector<Aphid> aphidVector, vector<Ladybug> ladyVector,
 		Configuration initialConfig, int gridLength, int gridHeight) {
-
+	Grid newGrid;
 	while (true) {
+		vector<cell> allCells = newGrid.getExistingCells();
+		if (allCells.size() > 0) {
+			for (vector<cell>::iterator cellIt = allCells.begin();
+					cellIt != allCells.end(); ++cellIt) {
+				if (myMath.AphidsMate(
+						initialConfig.getAphidReproConf())) {
+					if ((*cellIt).checkAphidsReproduce()) {
+						Aphid baby;
+						(*cellIt).InsertAphid(baby);
+						aphidVector.push_back(baby);
+					}
+				}
+			}
+		}
+
 		for (vector<Aphid>::iterator aphIt = aphidVector.begin();
 				aphIt != aphidVector.end(); ++aphIt) {
 			if (myMath.FinaliseProbability(initialConfig.getAphidMoveConf())) {
@@ -152,7 +167,7 @@ void Manager::runGame(vector<Aphid> aphidVector, vector<Ladybug> ladyVector,
 			}
 		}
 		//cout<<endl<<"Ladybugs moved."<<endl;
-		Grid newGrid;
+
 		newGrid.create(aphidVector, ladyVector);
 		//cout<<endl<<"Grid created and written."<<endl;
 		this_thread::sleep_for(chrono::milliseconds(500));
